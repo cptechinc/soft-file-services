@@ -1,0 +1,52 @@
+{
+    "error": false,
+    "errormsg": "",
+    "file-type": "return-goods-authorization",
+    "data": {
+        "header": {
+            "RGA Number": "1",
+            "Customer ID": "585643",
+            "Customer Name": "EARNEST MACHINE PRODUCTS CO.",
+            "Ship-To ID": "",
+            "Ship-To Name": "",
+            "Contact": "CONTACT NAME",
+            "Customer PO": "40029913",
+            "Return Warehouse ID": "",
+            "Return Warehouse Name": "MEGA",
+            "Return Whse Address 1": "6 SHELTER DRIVE",
+            "Return Whse Address 2": "SUITE A",
+            "Return Whse Address 3": "",
+            "Return Whse Phone Number": "864-877-3120",
+            "Return Whse Fax Number": "864-877-3121",
+            "Return Ship Via Code": "SHIP CODE",
+            "Return Ship Via Desc": "UPS GRD-LINDSTRUM",
+            "Return Ship Account Nbr": "568-E88",
+            "Manager Initials": "MNGR INIT",
+            "Restock Fee": "RSTK FEE Y/N",
+            "Issue Credit": "ISSUE FEE Y/N",
+            "Issue Credit Comment": "Issue credit comment line",
+            "Page Number": "1",
+            "Current Date": "06/29/18"
+        },
+        "detail": {
+            "Item ID": "SIWIS0620USA",
+            "Item Description 1": "5/8 INT TLW ZN 1228-00-00-0551",
+            "Item Description 2": "",
+            "Unit of Measure": "UOM",
+            "Original Warehouse ID": "",
+            "Original Warehouse Name": "",
+            "Original Invoice Number": "388408000",
+            "Reason Code": "SALES",
+            "Reason Description": "",
+            "Reason Comment": "Reason code comment if 'other'",
+            "Quantity To Return": "7000",
+            "Unit Price": "20.66",
+            "To Return Amount": "20.66"
+        },
+        "total": {
+            "Quantity To Return": "7000",
+            "To Return Amount": "20.66",
+            "Continued": ""
+        }
+    }
+}
