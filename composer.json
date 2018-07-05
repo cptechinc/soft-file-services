@@ -1,0 +1,39 @@
+{
+    "name": "cptechinc/soft-file-services",
+    "type": "library",
+    "description": "Dplus File Services",
+    "keywords": [ "dpluso", "dplus-file-services","files" ],
+    "license": "MPL-2.0",
+    "homepage": "https://processwire.com",
+    "minimum-stability": "dev",
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/cptechinc/purl.git"
+    }],
+    "authors": [
+        {
+            "name": "Paul Gomez",
+            "email": "paul@cptechinc.com",
+            "homepage": "https://www.cptechinc.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Barbara Bullemer",
+            "email": "barbara@cptechinc.com",
+            "homepage": "https://www.cptechinc.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "ext-gd": "*",
+        "jwage/purl": "dev-cptechinc",
+        "atk4/dsql": "1.1",
+        "eoghanobrien/php-simple-mail": "^1.7",
+        "mikehaertl/phpwkhtmltopdf": "^2.3",
+        "picqer/php-barcode-generator": "^0.2.2"
+    },
+    "autoload": {
+        "files": [ "wire/core/ProcessWire.php" ]
+    }
+}
