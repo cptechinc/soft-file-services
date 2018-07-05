@@ -77,6 +77,7 @@
 		 * @var string /path/to/dir
 		 */
 		public static $filedir = false;
+		
 		/**
 		 * File Directory for Test Files
 		 * @var string /path/to/dir
@@ -298,23 +299,23 @@
 		============================================================ */
 		/**
 		 * Defines Default File Directory
-		 * @param string $dir [path/to/dir
+		 * @param string $dir path/to/dir
 		 */
 		public static function set_filedirectory($dir) {
 			self::$filedir = $dir;
 		}
 
 		/**
-		 * Defines test File Directory
-		 * @param string $dir [path/to/dir
+		 * Defines test data Directory
+		 * @param string $dir path/to/dir
 		 */
-		public static function set_testfiledirectory($dir) {
+		public static function set_testdatafiledirectory($dir) {
 			self::$testfiledir = $dir;
 		}
 
 		/**
-		 * Defines fields files Directory
-		 * @param string $dir [path/to/dir
+		 * Defines field definiton file Directory
+		 * @param string $dir path/to/dir
 		 */
 		public static function set_fieldfiledirectory($dir) {
 			self::$fieldfiledir = $dir;

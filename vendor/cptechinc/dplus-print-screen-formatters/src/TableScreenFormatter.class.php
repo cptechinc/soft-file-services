@@ -29,6 +29,12 @@
 		 */
 		protected $datetypes = array('m/d/y' => 'MM/DD/YY', 'm/d/Y' => 'MM/DD/YYYY', 'm/d' => 'MM/DD', 'm/Y' => 'MM/YYYY');
 		
+		/**
+		 * File Directory for default formatters
+		 * @var string /path/to/dir
+		 */
+		public static $defaultformatterdirectory = false;
+		
 		/* =============================================================
            CONSTRUCTOR AND SETTER FUNCTIONS
        ============================================================ */
@@ -235,7 +241,7 @@
 			$userID = !empty($userID) ? $userID : DplusWire::wire('user')->loginid;
 			
             if (DplusWire::wire('users')->find("name=$userID")->count) {
-               $allowed = DplusWire::wire('users')->get("name=".DplusWire::wire('user')->loginid)->hasPermission('setup-screen-formatter');
+               $allowed = DplusWire::wire('users')->get("name=".DplusWire::wire('user')->loginid)->hasPermission('setup-formatter');
             }
 			return $allowed;
         }
@@ -303,7 +309,7 @@
 				$this->formatter = get_printformatter($this->type);
 				$this->source = 'database';
 			} else {
-				$this->formatter = file_get_contents(DplusWire::wire('config')->paths->vendor."cptechinc/dpluso-screen-formatters/src/default/$this->type.json");
+				$this->formatter = file_get_contents($this::$defaultformatterdirectory."$this->type.json");
 				$this->source = 'default';
 			}
 			$this->formatter = json_decode($this->formatter, true);
@@ -317,9 +323,6 @@
 		protected function does_userhaveformatter($userID = '') {
 			return does_tableformatterexist($this->type);
 		}
-		
-		
-		
 		
 		
 		/**
@@ -338,5 +341,16 @@
 		 */
 		protected function create($debug = false) {
 			return create_formatter($this->type, json_encode($this->formatter), $debug);
+		}
+		
+		/* =============================================================
+			STATIC FUNCTIONS
+		========================================================== */
+		/**
+		 * Defines default formatters Directory
+		 * @param string $dir path/to/dir
+		 */
+		public static function set_defaultformatterfiledirectory($dir) {
+			self::$defaultformatterdirectory = $dir;
 		}
 }

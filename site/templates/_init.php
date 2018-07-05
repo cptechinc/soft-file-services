@@ -18,6 +18,7 @@ include_once($config->paths->vendor."cptechinc/dplus-base/vendor/autoload.php");
 include_once($config->paths->vendor."cptechinc/dplus-processwire/vendor/autoload.php");
 include_once($config->paths->vendor."cptechinc/dplus-content/vendor/autoload.php");
 include_once($config->paths->vendor."cptechinc/dplus-order-classes/vendor/autoload.php");
+include_once($config->paths->vendor."cptechinc/dplus-print-screen-formatters/vendor/autoload.php");
 
 $page->stringerbell = new StringerBell();
 $page->htmlwriter = new HTMLWriter();
@@ -30,3 +31,9 @@ $config->scripts->append(hashtemplatefile('scripts/libs/libraries.js'));
 $config->scripts->append(hashtemplatefile('scripts/scripts.js'));
 
 $appconfig = $pages->get('/config/');
+
+$page->formatterfactory = new PrintFormatterFactory(session_id());
+TableScreenMaker::set_filedirectory($config->jsonfilepath);
+TableScreenMaker::set_testdatafiledirectory($config->paths->vendor."cptechinc/dpluso-screen-formatters/examples/");
+TableScreenMaker::set_fieldfiledirectory($config->paths->vendor."cptechinc/dpluso-screen-formatters/src/field-definition/");
+TableScreenFormatter::set_defaultformatterfiledirectory($config->paths->vendor."cptechinc/dpluso-screen-formatters/default/");

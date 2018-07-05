@@ -1,0 +1,14 @@
+{
+	"name": "cptechinc/dplus-print-screen-formatters",
+    "type": "library",
+    "description": "Classes for Dplus Online",
+    "keywords": ["print", "dplus"],
+    "homepage": "http://github.com/cptechinc/dplus-print-screen-formatters",
+	"autoload": {
+		"files": [
+			"src/PrintFormatterFactory.class.php",
+			"src/TableScreen.class.php",
+			"src/TableScreenFormatter.class.php"
+        ]
+    }
+}
