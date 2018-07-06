@@ -34,6 +34,20 @@ $appconfig = $pages->get('/config/');
 
 $page->formatterfactory = new PrintFormatterFactory(session_id());
 TableScreenMaker::set_filedirectory($config->jsonfilepath);
-TableScreenMaker::set_testdatafiledirectory($config->paths->vendor."cptechinc/dpluso-screen-formatters/examples/");
-TableScreenMaker::set_fieldfiledirectory($config->paths->vendor."cptechinc/dpluso-screen-formatters/src/field-definition/");
-TableScreenFormatter::set_defaultformatterfiledirectory($config->paths->vendor."cptechinc/dpluso-screen-formatters/default/");
+TableScreenMaker::set_testdatafiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/examples/");
+TableScreenMaker::set_fieldfiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/src/field-definition/");
+TableScreenFormatter::set_defaultformatterfiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/default/");
+
+$page->fullURL = new \Purl\Url($page->httpUrl);
+$page->fullURL->path = '';
+if (!empty($config->filename) && $config->filename != '/') {
+	$page->fullURL->join($config->filename);
+}
+
+if ($input->get->modal) {
+	$config->modal = true;
+}
+
+if ($input->get->json) {
+	$config->json = true;
+}

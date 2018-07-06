@@ -14,7 +14,7 @@
             </a>
 			<img class="header-logo hidden-xs" id="header-logo" src="<?= $config->urls->files; ?>images/dplus.png" height="50">
 			<img class="header-logo hidden-sm hidden-md hidden-lg" id="header-logo" src="<?= $config->urls->files; ?>images/dplus-short.png" height="50">
-			<img src="<?= $appconfig->companylogo->url; ?>" alt="<?= $appconfig->companydisplayname.' logo'; ?>" height="60" class="hidden-sm hidden-md hidden-lg pull-right">
+			<img src="<?= $appconfig->company_logo->url; ?>" alt="<?= $appconfig->company_displayname.' logo'; ?>" height="60" class="hidden-sm hidden-md hidden-lg pull-right">
 		</div>
 
 
