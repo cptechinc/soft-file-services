@@ -8,7 +8,8 @@
 		"files": [
 			"src/PrintFormatterFactory.class.php",
 			"src/TableScreen.class.php",
-			"src/TableScreenFormatter.class.php"
+			"src/TableScreenFormatter.class.php",
+			"src/ReturnGoodsAuthorizationFormatter.class.php"
         ]
     }
 }

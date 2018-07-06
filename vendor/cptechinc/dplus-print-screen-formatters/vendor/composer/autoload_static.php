@@ -10,6 +10,7 @@ class ComposerStaticInit50d4c790de908ea6f4a2017684db13ab
         '17df374839e08dc001b6e0c163de86db' => __DIR__ . '/../..' . '/src/PrintFormatterFactory.class.php',
         'ca453d80eb045908d96f1a515b6a203a' => __DIR__ . '/../..' . '/src/TableScreen.class.php',
         'd129455c0d73753bc7bdce5c135463c9' => __DIR__ . '/../..' . '/src/TableScreenFormatter.class.php',
+        '5d1871d0ae44d9e96ab4bfd3715c64fe' => __DIR__ . '/../..' . '/src/ReturnGoodsAuthorizationFormatter.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

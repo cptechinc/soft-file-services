@@ -36,12 +36,12 @@
 		public static $defaultformatterdirectory = false;
 		
 		/* =============================================================
-           CONSTRUCTOR AND SETTER FUNCTIONS
-       ============================================================ */
+		   CONSTRUCTOR AND SETTER FUNCTIONS
+	   ============================================================ */
 	   /**
-	    * Constructor
-	    * @param string $sessionID Session Identifier
-	    */
+		* Constructor
+		* @param string $sessionID Session Identifier
+		*/
 		public function __construct($sessionID) {
 			parent::__construct($sessionID);
 			$this->load_fields();
@@ -50,8 +50,8 @@
 		}
 		
 		/* =============================================================
-    		SETTER FUNCTIONS
-       ============================================================ */
+			SETTER FUNCTIONS
+	   ============================================================ */
 		/**
 		 * Turns Debug On or Off
 		 * @param bool $debug Turn on Debug?
@@ -70,17 +70,17 @@
 		}
 		
 		/* =============================================================
-    		GETTER FUNCTIONS
-       ============================================================ */
+			GETTER FUNCTIONS
+	   ============================================================ */
 	   /**
-	    * Returns the formatter property
-	    * @return array Formatter
-	    */
+		* Returns the formatter property
+		* @return array Formatter
+		*/
 		public function get_formatter() {
 			if (!$this->formatter) {
-                $this->load_formatter();
-            }
-            return $this->formatter;
+				$this->load_formatter();
+			}
+			return $this->formatter;
 		}
 		
 		/**
@@ -100,8 +100,8 @@
 		}
 		
 		/* =============================================================
-        	PUBLIC FUNCTIONS
-       	============================================================ */
+			PUBLIC FUNCTIONS
+		============================================================ */
 		/**
 		 * Generates and Sets tableblueprint property based on 
 		 * the input
@@ -237,61 +237,61 @@
 		 * @return bool           Is the User allowed to edit this formatter?
 		 */
 		public function can_edit($userID = '') {
-            $allowed = false;
+			$allowed = false;
 			$userID = !empty($userID) ? $userID : DplusWire::wire('user')->loginid;
 			
-            if (DplusWire::wire('users')->find("name=$userID")->count) {
-               $allowed = DplusWire::wire('users')->get("name=".DplusWire::wire('user')->loginid)->hasPermission('setup-formatter');
-            }
+			if (DplusWire::wire('users')->find("name=$userID")->count) {
+			   $allowed = DplusWire::wire('users')->get("name=".DplusWire::wire('user')->loginid)->hasPermission('setup-formatter');
+			}
 			return $allowed;
-        }
+		}
 			
 		/* =============================================================
-    		CLASS FUNCTIONS
-       	============================================================ */
+			CLASS FUNCTIONS
+		============================================================ */
 		/**
 		 * Parses through the formatter array and sets the tableblueprint
 		 * @return void
 		 */
-        protected function generate_tableblueprint() {
-            $tablesections = array_keys($this->fields['data']);
-            $table = array('cols' => $this->formatter['cols']);
+		protected function generate_tableblueprint() {
+			$tablesections = array_keys($this->fields['data']);
+			$table = array('cols' => $this->formatter['cols']);
 			
-            foreach ($tablesections as $section) {
-                $columns = array_keys($this->formatter[$section]['columns']);
+			foreach ($tablesections as $section) {
+				$columns = array_keys($this->formatter[$section]['columns']);
 				
-                $table[$section] = array(
+				$table[$section] = array(
 					'maxrows' => $this->formatter[$section]['rows'], 
 					'rows' => array()
 				);
-            
-                for ($i = 1; $i < $this->formatter[$section]['rows'] + 1; $i++) {
-            		$table[$section]['rows'][$i] = array('columns' => array());
-            		foreach ($columns as $column) {
-            			if ($this->formatter[$section]['columns'][$column]['line'] == $i) {
-            				$col = array(
-            					'id' => $column, 
-            					'label' => $this->formatter[$section]['columns'][$column]['label'], 
-            					'column' => $this->formatter[$section]['columns'][$column]['column'], 
-            					'col-length' => $this->formatter[$section]['columns'][$column]['col-length'], 
-            					'before-decimal' => $this->formatter[$section]['columns'][$column]['before-decimal'],
-            					'after-decimal' => $this->formatter[$section]['columns'][$column]['after-decimal'], 
-            					'date-format' => $this->formatter[$section]['columns'][$column]['date-format']
-            				 );
-            				$table[$section]['rows'][$i]['columns'][$this->formatter[$section]['columns'][$column]['column']] = $col;
-            			}
-            		}
-            	}
-            }
-            $this->tableblueprint = $table;
-        }
+			
+				for ($i = 1; $i < $this->formatter[$section]['rows'] + 1; $i++) {
+					$table[$section]['rows'][$i] = array('columns' => array());
+					foreach ($columns as $column) {
+						if ($this->formatter[$section]['columns'][$column]['line'] == $i) {
+							$col = array(
+								'id' => $column, 
+								'label' => $this->formatter[$section]['columns'][$column]['label'], 
+								'column' => $this->formatter[$section]['columns'][$column]['column'], 
+								'col-length' => $this->formatter[$section]['columns'][$column]['col-length'], 
+								'before-decimal' => $this->formatter[$section]['columns'][$column]['before-decimal'],
+								'after-decimal' => $this->formatter[$section]['columns'][$column]['after-decimal'], 
+								'date-format' => $this->formatter[$section]['columns'][$column]['date-format']
+							 );
+							$table[$section]['rows'][$i]['columns'][$this->formatter[$section]['columns'][$column]['column']] = $col;
+						}
+					}
+				}
+			}
+			$this->tableblueprint = $table;
+		}
 		
 		/**
 		 * Set the fields array with the values from the json file
 		 * @return void
 		 */
 		protected function load_fields() {
-			$this->fields = json_decode(file_get_contents(self::$fieldfiledir."$this->formatterfieldsfile.json"), true);
+			$this->fields = json_decode(file_get_contents(self::$fieldfiledir."$this->type.json"), true);
 		}
 		
 		/* =============================================================
@@ -316,12 +316,12 @@
 		}
 		
 		/**
-		 * REturns if user has a formatter for this type saved
+		 * Returns if user has a formatter for this type saved
 		 * @param  string   $userID User ID
 		 * @return bool             Does User have a formatter
 		 */
-		protected function does_userhaveformatter($userID = '') {
-			return does_tableformatterexist($this->type);
+		protected function does_printformatterexist($userID = 'default') {
+			return does_printformatterexist($this->type, $userID);
 		}
 		
 		
