@@ -1,10 +1,29 @@
 {
-    "cols": 1,
+    "cols": 4,
     "header": {
+        "cols": 4,
         "rows": 1,
         "columns": {
-            "RGA Number": {
+            "Page Number": {
                 "line": 1,
+                "column": 1,
+                "col-length": 1,
+                "label": "Pg No",
+                "before-decimal": 3,
+                "after-decimal": false,
+                "date-format": false
+            },
+            "Current Date": {
+                "line": 2,
+                "column": 1,
+                "col-length": 1,
+                "label": "Date",
+                "before-decimal": false,
+                "after-decimal": false,
+                "date-format": "m/d/Y"
+            },
+            "RGA Number": {
+                "line": 3,
                 "column": 1,
                 "col-length": 1,
                 "label": "RGA No",
@@ -13,8 +32,8 @@
                 "date-format": false
             },
             "Customer ID": {
-                "line": 1,
-                "column": 2,
+                "line": 4,
+                "column": 1,
                 "col-length": 1,
                 "label": "Cust ID",
                 "before-decimal": false,
@@ -22,8 +41,8 @@
                 "date-format": false
             },
             "Customer Name": {
-                "line": 1,
-                "column": 3,
+                "line": 5,
+                "column": 1,
                 "col-length": 1,
                 "label": "Cust Name",
                 "before-decimal": false,
@@ -49,8 +68,8 @@
                 "date-format": false
             },
             "Contact": {
-                "line": 1,
-                "column": 4,
+                "line": 6,
+                "column": 1,
                 "col-length": 1,
                 "label": "Contact",
                 "before-decimal": false,
@@ -58,8 +77,8 @@
                 "date-format": false
             },
             "Customer PO": {
-                "line": 1,
-                "column": 5,
+                "line": 7,
+                "column": 1,
                 "col-length": 1,
                 "label": "Cust PO",
                 "before-decimal": false,
@@ -68,7 +87,7 @@
             },
             "Return Warehouse ID": {
                 "line": 1,
-                "column": 6,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Whse ID",
                 "before-decimal": false,
@@ -76,8 +95,8 @@
                 "date-format": false
             },
             "Return Warehouse Name": {
-                "line": 1,
-                "column": 7,
+                "line": 2,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Whse Name",
                 "before-decimal": false,
@@ -85,8 +104,8 @@
                 "date-format": false
             },
             "Return Whse Address 1": {
-                "line": 1,
-                "column": 8,
+                "line": 3,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Whse Addr",
                 "before-decimal": false,
@@ -94,8 +113,8 @@
                 "date-format": false
             },
             "Return Whse Address 2": {
-                "line": 0,
-                "column": 0,
+                "line": 4,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Whse Addr2",
                 "before-decimal": false,
@@ -103,8 +122,8 @@
                 "date-format": false
             },
             "Return Whse Address 3": {
-                "line": 0,
-                "column": 0,
+                "line": 5,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Whse Addr3",
                 "before-decimal": false,
@@ -112,8 +131,8 @@
                 "date-format": false
             },
             "Return Whse Phone Number": {
-                "line": 1,
-                "column": 9,
+                "line": 6,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Addr Phone",
                 "before-decimal": false,
@@ -121,8 +140,8 @@
                 "date-format": false
             },
             "Return Whse Fax Number": {
-                "line": 1,
-                "column": 10,
+                "line": 7,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Whse Fax",
                 "before-decimal": false,
@@ -130,8 +149,8 @@
                 "date-format": false
             },
             "Return Ship Via Code": {
-                "line": 0,
-                "column": 0,
+                "line": 8,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return ShipviaCode",
                 "before-decimal": false,
@@ -139,8 +158,8 @@
                 "date-format": false
             },
             "Return Ship Via Desc": {
-                "line": 1,
-                "column": 11,
+                "line": 9,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Shipvia Desc",
                 "before-decimal": false,
@@ -148,8 +167,8 @@
                 "date-format": false
             },
             "Return Ship Account Nbr": {
-                "line": 1,
-                "column": 12,
+                "line": 10,
+                "column": 2,
                 "col-length": 1,
                 "label": "Return Ship Account No",
                 "before-decimal": false,
@@ -157,8 +176,8 @@
                 "date-format": false
             },
             "Manager Initials": {
-                "line": 1,
-                "column": 13,
+                "line": 11,
+                "column": 2,
                 "col-length": 1,
                 "label": "Mngr Initials",
                 "before-decimal": false,
@@ -166,8 +185,8 @@
                 "date-format": false
             },
             "Restock Fee": {
-                "line": 0,
-                "column": 0,
+                "line": 12,
+                "column": 2,
                 "col-length": 1,
                 "label": "Restock Fee",
                 "before-decimal": false,
@@ -175,8 +194,8 @@
                 "date-format": false
             },
             "Issue Credit": {
-                "line": 1,
-                "column": 14,
+                "line": 13,
+                "column": 2,
                 "col-length": 1,
                 "label": "Issue Credit",
                 "before-decimal": false,
@@ -184,31 +203,13 @@
                 "date-format": false
             },
             "Issue Credit Comment": {
-                "line": 1,
-                "column": 15,
+                "line": 14,
+                "column": 2,
                 "col-length": 1,
                 "label": "Issue Credit Comment",
                 "before-decimal": false,
                 "after-decimal": false,
                 "date-format": false
-            },
-            "Page Number": {
-                "line": 1,
-                "column": 16,
-                "col-length": 1,
-                "label": "Pg No",
-                "before-decimal": 3,
-                "after-decimal": false,
-                "date-format": false
-            },
-            "Current Date": {
-                "line": 1,
-                "column": 17,
-                "col-length": 1,
-                "label": "Date",
-                "before-decimal": false,
-                "after-decimal": false,
-                "date-format": "m/d/Y"
             }
         }
     },
@@ -225,7 +226,7 @@
                 "date-format": false
             },
             "Item Description 1": {
-                "line": 1,
+                "line": 2,
                 "column": 1,
                 "col-length": 1,
                 "label": "Item Desc",
@@ -234,8 +235,8 @@
                 "date-format": false
             },
             "Item Description 2": {
-                "line": 0,
-                "column": 0,
+                "line": 3,
+                "column": 1,
                 "col-length": 1,
                 "label": "Item Desc 2",
                 "before-decimal": false,
@@ -243,8 +244,8 @@
                 "date-format": false
             },
             "Unit of Measure": {
-                "line": 1,
-                "column": 2,
+                "line": 4,
+                "column": 1,
                 "col-length": 1,
                 "label": "UoM",
                 "before-decimal": false,
@@ -252,8 +253,8 @@
                 "date-format": false
             },
             "Original Warehouse ID": {
-                "line": 0,
-                "column": 0,
+                "line": 5,
+                "column": 1,
                 "col-length": 1,
                 "label": "Org Whse ID",
                 "before-decimal": false,
@@ -261,8 +262,8 @@
                 "date-format": false
             },
             "Original Warehouse Name": {
-                "line": 0,
-                "column": 0,
+                "line": 6,
+                "column": 1,
                 "col-length": 1,
                 "label": "Org Whse Name",
                 "before-decimal": false,
@@ -270,8 +271,8 @@
                 "date-format": false
             },
             "Original Invoice Number": {
-                "line": 1,
-                "column": 5,
+                "line": 7,
+                "column": 1,
                 "col-length": 1,
                 "label": "Org Inv No",
                 "before-decimal": 10,
@@ -279,8 +280,8 @@
                 "date-format": false
             },
             "Reason Code": {
-                "line": 1,
-                "column": 6,
+                "line": 8,
+                "column": 1,
                 "col-length": 1,
                 "label": "Reason Code",
                 "before-decimal": false,
@@ -288,8 +289,8 @@
                 "date-format": false
             },
             "Reason Description": {
-                "line": 0,
-                "column": 0,
+                "line": 9,
+                "column": 1,
                 "col-length": 1,
                 "label": "Reason Desc",
                 "before-decimal": false,
@@ -297,8 +298,8 @@
                 "date-format": false
             },
             "Reason Comment": {
-                "line": 1,
-                "column": 7,
+                "line": 10,
+                "column": 1,
                 "col-length": 1,
                 "label": "Reason Comment",
                 "before-decimal": false,
@@ -306,8 +307,8 @@
                 "date-format": false
             },
             "Quantity To Return": {
-                "line": 1,
-                "column": 3,
+                "line": 11,
+                "column": 1,
                 "col-length": 1,
                 "label": "Qty to Return",
                 "before-decimal": 7,
@@ -315,8 +316,8 @@
                 "date-format": false
             },
             "Unit Price": {
-                "line": 1,
-                "column": 4,
+                "line": 12,
+                "column": 1,
                 "col-length": 1,
                 "label": "Unit Price",
                 "before-decimal": 7,
@@ -324,8 +325,8 @@
                 "date-format": false
             },
             "To Return Amount": {
-                "line": 0,
-                "column": 0,
+                "line": 13,
+                "column": 1,
                 "col-length": 1,
                 "label": "To Return Amt",
                 "before-decimal": 7,
@@ -338,8 +339,8 @@
         "rows": 1,
         "columns": {
             "Quantity To Return": {
-                "line": 0,
-                "column": 0,
+                "line": 1,
+                "column": 1,
                 "col-length": 1,
                 "label": "Qty to Return",
                 "before-decimal": 7,
@@ -347,8 +348,8 @@
                 "date-format": false
             },
             "To Return Amount": {
-                "line": 0,
-                "column": 0,
+                "line": 2,
+                "column": 1,
                 "col-length": 1,
                 "label": "To Return Amt",
                 "before-decimal": 7,
@@ -356,7 +357,7 @@
                 "date-format": false
             },
             "Continued": {
-                "line": 1,
+                "line": 0,
                 "column": 1,
                 "col-length": 1,
                 "label": "Continued",

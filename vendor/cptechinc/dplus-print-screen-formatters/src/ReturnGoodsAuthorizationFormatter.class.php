@@ -1,4 +1,4 @@
-<?php 
+<?php
 	class ReturnGoodsAuthorizationFormatter extends TableScreenFormatter {
 		protected $tabletype = 'grid'; // grid or normal
 		protected $type = 'return-goods-authorization'; // ii-sales-history
@@ -8,11 +8,18 @@
 		protected $datasections = array(
 			"header" => "Header"
 		);
-		
+
 		public function generate_screen() {
-			return $this->generate_customerheader();
+			$bootstrap = new HTMLWriter();
+			$content = $this->generate_customerheader();
+			$this->generate_tableblueprint();
+
+			$content .= $bootstrap->open('div','class=row');
+			$content .= $bootstrap->div('class=col-sm-6', $this->generate_section());
+			$content .= $bootstrap->close('div');
+			return $content;
 		}
-		
+
 		protected function generate_customerheader() {
 			$bootstrap = new HTMLWriter();
 			$content = $bootstrap->open('div', 'class=row');
@@ -28,6 +35,23 @@
 			$content .= $bootstrap->close('div');
 			return $content;
 		}
+
+		protected function generate_section($number = 1) {
+			$bootstrap = new HTMLWriter();
+			$content = '';
+
+			$tb = new Table('class=table table-condensed table-striped');
+
+			foreach ($this->tableblueprint['header']['sections']["$number"] as $column) {
+				$tb->tr();
+				$tb->td('', $column['label']);
+
+				$celldata = $this->json['data']['header'][$column['id']];
+				$tb->td('', $celldata);
+			}
+			return $tb->close();
+		}
+
 		/**
 		 * Generates the table blueprint
 		 * This page divides the Item Page Screen into 4 sections / columns
@@ -44,7 +68,7 @@
 					)
 				)
 			);
-			
+
 			for ($i = 1; $i < 5; $i++) {
 				foreach(array_keys($this->formatter['header']['columns']) as $column) {
 					if ($this->formatter['header']['columns'][$column]['column'] == $i) {
@@ -64,5 +88,3 @@
 			$this->tableblueprint = $table;
 		}
 	}
-	
-	
