@@ -11,6 +11,7 @@
 	// Get document title for page
 	$page->title = $formatter->get_doctitle();
 	
+	// Add Print Page link if needed
 	if ($config->ajax && $input->$requestmethod->text('action') != 'preview') {
 		$url = new Purl\Url($page->fullURL->getUrl());
 		$url->query->set('view', 'print');

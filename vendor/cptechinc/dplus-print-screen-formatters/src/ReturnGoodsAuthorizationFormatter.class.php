@@ -16,7 +16,11 @@
 		public function get_doctitle() {
 			return $this->debug ? "$this->title DEBUG" : $this->title . ' #'.$this->sessionID;
 		}
-
+		
+		/**
+		 * Returns the HTML content needed to generate the Print Screen
+		 * @return string HTML 
+		 */
 		public function generate_screen() {
 			$bootstrap = new HTMLWriter();
 			$content = $this->generate_documentheader();
@@ -32,7 +36,12 @@
 			$content .= $this->generate_footersection();
 			return $content;
 		}
-
+		
+		/**
+		 * Returns the Header Portion of the RGA Document
+		 * Includes RGA Number, Company Logo, Company Address
+		 * @return string HTML Content
+		 */
 		protected function generate_documentheader() {
 			$bootstrap = new HTMLWriter();
 			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
@@ -54,7 +63,12 @@
 			$content .= $bootstrap->close('div');
 			return $content;
 		}
-
+		
+		/**
+		 * Returns the Header information of an RGA
+		 * @param  int    $number Which Section Number 1 - 6
+		 * @return string         HTML Table for that section
+		 */
 		protected function generate_headersection($number = 1) {
 			$bootstrap = new HTMLWriter();
 			$tb = new Table('class=table table-condensed table-striped');
@@ -69,6 +83,10 @@
 			return $tb->close();
 		}
 		
+		/**
+		 * Returns HTML Table for the detail lines on the RGA
+		 * @return string  HTML Table
+		 */
 		protected function generate_detailsection() {
 			$bootstrap = new HTMLWriter();
 			$tb = new Table('class=table table-condensed table-striped');
@@ -101,6 +119,11 @@
 			return $tb->close();
 		}
 		
+		/**
+		 * Returns the HTML for the footer section of the document
+		 * Includes the Lines for Date and Received by
+		 * @return string HTML Content
+		 */
 		protected function generate_footersection() {
 			$bootstrap = new HTMLWriter();
 			$content = $bootstrap->div('class=form-group', DplusWire::wire('pages')->get("/config/documents/$this->type/")->terms);
