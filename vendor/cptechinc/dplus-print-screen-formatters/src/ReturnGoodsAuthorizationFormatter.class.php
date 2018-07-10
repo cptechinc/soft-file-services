@@ -8,7 +8,7 @@
 		protected $datasections = array(
 			"header" => "Header"
 		);
-		
+
 		/**
 		 * Returns the title for the document screen
 		 * @return string Document Title
@@ -16,10 +16,10 @@
 		public function get_doctitle() {
 			return $this->debug ? "$this->title DEBUG" : $this->title . ' #'.$this->sessionID;
 		}
-		
+
 		/**
 		 * Returns the HTML content needed to generate the Print Screen
-		 * @return string HTML 
+		 * @return string HTML
 		 */
 		public function generate_screen() {
 			$bootstrap = new HTMLWriter();
@@ -36,7 +36,7 @@
 			$content .= $this->generate_footersection();
 			return $content;
 		}
-		
+
 		/**
 		 * Returns the Header Portion of the RGA Document
 		 * Includes RGA Number, Company Logo, Company Address
@@ -46,14 +46,14 @@
 			$bootstrap = new HTMLWriter();
 			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
-			
+
 			$content = $bootstrap->open('div', 'class=row');
 				$content .= $bootstrap->open('div', 'class=col-xs-6 form-group');
 					$content .= $bootstrap->h3('', $this->title);
 					$content .= $bootstrap->h4('', 'RGA #'. $this->json['RGA Number']);
 					$content .= $bootstrap->div('', $bootstrap->img("src=data:image/png;base64,$barcode_base64|class=img-responsive|alt=RGA # Barcode"));
 				$content .= $bootstrap->close('div');
-				$content .= $bootstrap->open('div', 'class=col-xs-6 form-group');
+				$content .= $bootstrap->open('div', 'class=col-xs-4 form-group pull-right');
 					$imgsrc = DplusWire::wire('pages')->get('/config/')->company_logo->url;
 					$company = DplusWire::wire('pages')->get('/config/')->company_displayname;
 					$content .= $bootstrap->img("class=img-repsonsive|src=$imgsrc|alt=$company logo");
@@ -63,7 +63,7 @@
 			$content .= $bootstrap->close('div');
 			return $content;
 		}
-		
+
 		/**
 		 * Returns the Header information of an RGA
 		 * @param  int    $number Which Section Number 1 - 6
@@ -82,7 +82,7 @@
 			}
 			return $tb->close();
 		}
-		
+
 		/**
 		 * Returns HTML Table for the detail lines on the RGA
 		 * @return string  HTML Table
@@ -95,11 +95,12 @@
 				$tb->tr();
 				for ($i = 1; $i < ($this->formatter['detail']['cols'] + 1); $i++) {
 					$column = $detailrow['columns']["$i"];
-					$tb->th('', $column['label']);
+					$class = HTMLWriter::get_justifyclass($column['label-justify']);
+					$tb->th("class=$class", $column['label']);
 				}
 			}
 			$tb->closetablesection('thead');
-			
+
 			foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 				$tb->tr();
 				for ($colnumber = 1; $colnumber < ($this->formatter['detail']['cols'] + 1); $colnumber++) {
@@ -107,7 +108,7 @@
 					$celldata = $this->json['data']['detail'][$column['id']];
 					$colspan = $column['col-length'];
 					$class = HTMLWriter::get_justifyclass($column['data-justify']);
-					
+
 					if ($column['id'] == 'Item ID') {
 						$celldata .= "<br>".$this->json['data']['detail']['Item Description 1'];
 					} else {
@@ -118,7 +119,7 @@
 			}
 			return $tb->close();
 		}
-		
+
 		/**
 		 * Returns the HTML for the footer section of the document
 		 * Includes the Lines for Date and Received by
@@ -130,9 +131,8 @@
 			$content .= $bootstrap->br();
 			$tb = new Table('class=table table-condensed table-striped');
 			$tb->tr();
-			$tb->td('', 'Date: ')->td('', $bootstrap->input('class=form-control input-sm underlined price'));
-			$tb->tr();
 			$tb->td('', 'Received by: ')->td('', $bootstrap->input('class=form-control input-sm underlined price'));
+			$tb->td('', 'Date: ')->td('', $bootstrap->input('class=form-control input-sm underlined price'));
 			$content .= $tb->close();
 			return $content;
 		}
@@ -175,6 +175,7 @@
 							'date-format' => $this->formatter['header']['columns'][$column]['date-format'],
 							'input' => $this->formatter['header']['columns'][$column]['input'],
 							'data-justify' => $this->formatter['header']['columns'][$column]['data-justify'],
+							'label-justify' => $this->formatter['header']['columns'][$column]['label-justify']
 						 );
 						$table['header']['sections'][$i][$this->formatter['header']['columns'][$column]['line']] = $col;
 					}
@@ -183,13 +184,13 @@
 			$section = 'detail';
 			$columns = array_keys($this->formatter[$section]['columns']);
 			$skipable_columns = array('Item Description 1', 'Item Description 2');
-			
+
 			for ($i = 1; $i < $this->formatter[$section]['rows'] + 1; $i++) {
         		$table[$section]['rows'][$i] = array('columns' => array());
         		foreach ($columns as $column) {
         			if ($this->formatter[$section]['columns'][$column]['line'] == $i && !in_array($column, $skipable_columns)) {
         				$col = array(
-        					'id' => $column, 
+        					'id' => $column,
         					'label' => $this->formatter[$section]['columns'][$column]['label'],
         					'column' => $this->formatter[$section]['columns'][$column]['column'],
 							'type' => $this->formatter[$section]['columns'][$column]['type'],
@@ -199,6 +200,7 @@
         					'date-format' => $this->formatter[$section]['columns'][$column]['date-format'],
 							'input' => $this->formatter[$section]['columns'][$column]['input'],
 							'data-justify' => $this->formatter[$section]['columns'][$column]['data-justify'],
+							'label-justify' => $this->formatter[$section]['columns'][$column]['label-justify']
         				 );
         				$table[$section]['rows'][$i]['columns'][$this->formatter[$section]['columns'][$column]['column']] = $col;
         			}

@@ -29,8 +29,8 @@
 				"label-justify": "left"
             },
             "RGA Number": {
-                "line": 1,
-                "column": 1,
+                "line": 0,
+                "column": 0,
                 "col-length": 1,
                 "label": "RGA No",
                 "before-decimal": 10,
@@ -234,7 +234,7 @@
             },
             "Manager Initials": {
                 "line": 1,
-                "column": 4,
+                "column": 3,
                 "col-length": 1,
                 "label": "Mngr Initials",
                 "before-decimal": false,
@@ -246,7 +246,7 @@
             },
             "Restock Fee": {
                 "line": 2,
-                "column": 4,
+                "column": 3,
                 "col-length": 1,
                 "label": "Restock Fee",
                 "before-decimal": false,
@@ -258,7 +258,7 @@
             },
             "Issue Credit": {
                 "line": 3,
-                "column": 4,
+                "column": 3,
                 "col-length": 1,
                 "label": "Issue Credit",
                 "before-decimal": false,
@@ -270,7 +270,7 @@
             },
             "Issue Credit Comment": {
                 "line": 4,
-                "column": 4,
+                "column": 3,
                 "col-length": 1,
                 "label": "Issue Credit Comment",
                 "before-decimal": false,
@@ -368,7 +368,7 @@
                 "date-format": false,
 				"input": false,
 				"data-justify": "right",
-				"label-justify": "left"
+				"label-justify": "right"
             },
             "Reason Code": {
                 "line": 1,
@@ -379,8 +379,8 @@
                 "after-decimal": false,
                 "date-format": false,
 				"input": false,
-				"data-justify": "left",
-				"label-justify": "left"
+				"data-justify": "right",
+				"label-justify": "right"
             },
             "Reason Description": {
                 "line": 0,
@@ -416,7 +416,7 @@
                 "date-format": false,
 				"input": false,
 				"data-justify": "right",
-				"label-justify": "left"
+				"label-justify": "right"
             },
             "Quantity Recieved": {
                 "line": 1,
@@ -426,7 +426,9 @@
                 "before-decimal": 7,
                 "after-decimal": 4,
                 "date-format": false,
-				"input": true
+				"input": true,
+                "data-justify": "right",
+				"label-justify": "right"
             },
             "Unit Price": {
                 "line": 1,
@@ -438,7 +440,7 @@
                 "date-format": false,
 				"input": false,
 				"data-justify": "right",
-				"label-justify": "left"
+				"label-justify": "right"
             },
             "To Return Amount": {
                 "line": 0,
@@ -450,7 +452,7 @@
                 "date-format": false,
 				"input": false,
 				"data-justify": "left",
-				"label-justify": "left"
+				"label-justify": "center"
             }
         }
     },
