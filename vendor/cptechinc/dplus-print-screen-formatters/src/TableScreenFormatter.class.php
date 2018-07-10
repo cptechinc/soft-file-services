@@ -21,6 +21,10 @@
 		 */
 		protected $tableblueprint = false; // WILL BE ARRAY
 		
+		/**
+		 * Where is formatted derived from
+		 * @var string
+		 */
 		protected $source;
 		
 		/**
@@ -273,13 +277,14 @@
 		 */
 		protected function generate_tableblueprint() {
 			$tablesections = array_keys($this->fields['data']);
-			$table = array('cols' => $this->formatter['cols']);
+			$table = array('colcount' => $this->formatter['colcount']);
 			
 			foreach ($tablesections as $section) {
 				$columns = array_keys($this->formatter[$section]['columns']);
 				
 				$table[$section] = array(
-					'maxrows' => $this->formatter[$section]['rows'], 
+					'rowcount' => $this->formatter[$section]['rowcount'],
+					'colcount' => 0,
 					'rows' => array()
 				);
 			
@@ -301,6 +306,7 @@
 								'label-justify' => $this->formatter[$section]['columns'][$column]['label-justify'],
 							 );
 							$table[$section]['rows'][$i]['columns'][$this->formatter[$section]['columns'][$column]['column']] = $col;
+							$table[$section]['colcount'] = $col['column'] > $table[$section]['colcount'] ? $col['column'] : $table[$section]['colcount'];
 						}
 					}
 				}
@@ -328,7 +334,7 @@
 		 */
 		protected function load_formatter() {
 			if ($this->does_printformatterexist('default')) {
-				$this->formatter = get_printformatter($this->type);
+				$this->formatter = get_printformatter($this->type, 'default');
 				$this->source = 'database';
 			} else {
 				$this->formatter = file_get_contents($this::$defaultformatterdirectory."$this->type.json");
@@ -339,30 +345,29 @@
 		
 		/**
 		 * Returns if user has a formatter for this type saved
-		 * @param  string   $userID User ID
 		 * @return bool             Does User have a formatter
 		 */
-		protected function does_printformatterexist($userID = 'default') {
-			return does_printformatterexist($this->type, $userID);
+		protected function does_printformatterexist() {
+			return does_printformatterexist($this->type, $this->userID);
 		}
 		
 		
 		/**
 		 * Updates the formatter property to the database for this User
-		 * @param  bool   $debug Run in debug? If so, return SQL Query
+		 * @param  bool    $debug  Run in debug? If so, return SQL Query
 		 * @return array         Response
 		 */
-		protected function update($debug = false) {
-			return update_formatter($this->type, json_encode($this->formatter), $debug);
+		protected function update( $debug = false) {
+			return update_formatter($this->type, $this->userID, json_encode($this->formatter), $this->userID, $debug);
 		}
 		
 		/**
 		 * Saves the formatter property to the database for this User
-		 * @param  bool   $debug Run in debug? If so, return SQL Query
-		 * @return array         Response
+		 * @param  bool   $debug  Run in debug? If so, return SQL Query
+		 * @return array          Response
 		 */
 		protected function create($debug = false) {
-			return create_formatter($this->type, json_encode($this->formatter), $debug);
+			return create_formatter($this->type, $this->userID, json_encode($this->formatter), $debug);
 		}
 		
 		/* =============================================================

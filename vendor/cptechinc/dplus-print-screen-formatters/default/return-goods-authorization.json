@@ -1,8 +1,8 @@
 {
-    "cols": 4,
+    "colcount": 4,
     "header": {
-        "cols": 4,
-        "rows": 1,
+        "colcount": 4,
+        "rowcount": 1,
         "columns": {
             "Page Number": {
                 "line": 0,
@@ -283,8 +283,8 @@
         }
     },
     "detail": {
-        "rows": 1,
-        "cols": 6,
+        "rowcount": 1,
+        "colcount": 6,
         "columns": {
             "Item ID": {
                 "line": 1,

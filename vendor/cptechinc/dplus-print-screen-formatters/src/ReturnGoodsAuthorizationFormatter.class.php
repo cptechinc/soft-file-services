@@ -94,7 +94,7 @@
 			$tb->tablesection('thead');
 			foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 				$tb->tr();
-				for ($i = 1; $i < ($this->formatter['detail']['cols'] + 1); $i++) {
+				for ($i = 1; $i < ($this->formatter['detail']['colcount'] + 1); $i++) {
 					$column = $detailrow['columns']["$i"];
 					$class = HTMLWriter::get_justifyclass($column['label-justify']);
 					$tb->th("class=$class", $column['label']);
@@ -104,7 +104,7 @@
 
 			foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 				$tb->tr();
-				for ($colnumber = 1; $colnumber < ($this->formatter['detail']['cols'] + 1); $colnumber++) {
+				for ($colnumber = 1; $colnumber < ($this->formatter['detail']['colcount'] + 1); $colnumber++) {
 					$column = $detailrow['columns'][$colnumber];
 					$celldata = $this->json['data']['detail'][$column['id']];
 					$colspan = $column['col-length'];
@@ -157,7 +157,7 @@
 					)
 				),
 				'detail' => array(
-					'cols' => 0,
+					'colcount' => 0,
 					'rows' => array()
 				)
 			);
@@ -179,6 +179,7 @@
 							'label-justify' => $this->formatter['header']['columns'][$column]['label-justify']
 						 );
 						$table['header']['sections'][$i][$this->formatter['header']['columns'][$column]['line']] = $col;
+						$table['header']['colcount'] = $col['column'] > $table['header']['colcount'] ? $col['column'] : $table['header']['colcount'];
 					}
 				}
 			}
@@ -186,7 +187,7 @@
 			$columns = array_keys($this->formatter[$section]['columns']);
 			$skipable_columns = array('Item Description 1', 'Item Description 2');
 
-			for ($i = 1; $i < $this->formatter[$section]['rows'] + 1; $i++) {
+			for ($i = 1; $i < $this->formatter[$section]['rowcount'] + 1; $i++) {
         		$table[$section]['rows'][$i] = array('columns' => array());
         		foreach ($columns as $column) {
         			if ($this->formatter[$section]['columns'][$column]['line'] == $i && !in_array($column, $skipable_columns)) {
@@ -204,6 +205,7 @@
 							'label-justify' => $this->formatter[$section]['columns'][$column]['label-justify']
         				 );
         				$table[$section]['rows'][$i]['columns'][$this->formatter[$section]['columns'][$column]['column']] = $col;
+						$table[$section]['colcount'] = $col['column'] > $table[$section]['colcount'] ? $col['column'] : $table[$section]['colcount'];
         			}
         		}
         	}

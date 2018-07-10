@@ -12,6 +12,13 @@
 		 * @var string
 		 */
 		protected $sessionID;
+		
+		/**
+		 * User ID
+		 * Used for getting the Dplus Generated File
+		 * @var string
+		 */
+		protected $userID;
 
 		/**
 		 * Run in Debug
@@ -111,7 +118,6 @@
 		/**
 		 * Constructor
 		 * @param string $sessionID Session ID
-		 * @param string $userID    User ID
 		 */
 		public function __construct($sessionID) {
 			$this->sessionID = $sessionID;
@@ -125,6 +131,14 @@
 		public function set_debug($debug) {
 			$this->debug = $debug;
 			$this->load_filepath();
+		}
+		
+		/**
+		 * Turn debug on or Off
+		 * @param string $userID
+		 */
+		public function set_user($userID = 'default') {
+			$this->userID = $userID;
 		}
 		
 		/* =============================================================
