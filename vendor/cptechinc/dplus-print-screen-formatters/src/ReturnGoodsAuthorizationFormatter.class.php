@@ -6,7 +6,8 @@
 		protected $datafilename = 'return-goods-authorization'; // iisaleshist.json
 		protected $testprefix = 'rga-return-goods-authorization'; // iish
 		protected $datasections = array(
-			"header" => "Header"
+			"header" => "Header",
+			"detail" => "Detail"
 		);
 
 		/**

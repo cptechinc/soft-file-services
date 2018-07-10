@@ -35,7 +35,7 @@ $appconfig = $pages->get('/config/');
 $page->formatterfactory = new PrintFormatterFactory(session_id());
 TableScreenMaker::set_filedirectory($config->jsonfilepath);
 TableScreenMaker::set_testdatafiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/examples/");
-TableScreenMaker::set_fieldfiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/src/field-definition/");
+TableScreenMaker::set_fieldfiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/field-definition/");
 TableScreenFormatter::set_defaultformatterfiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/default/");
 
 $page->fullURL = new \Purl\Url($page->httpUrl);
