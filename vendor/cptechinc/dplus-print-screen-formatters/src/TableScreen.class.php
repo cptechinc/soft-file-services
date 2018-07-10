@@ -4,6 +4,7 @@
 	 */
 	abstract class TableScreenMaker {
 		use ThrowErrorTrait;
+		use MagicMethodTraits;
 
 		/**
 		 * Session ID
@@ -204,7 +205,7 @@
 		 * @return string                    HTML for screen
 		 */
 		public function process_andgeneratescreen($generatejavascript = false) {
-			$bootstrap = new Contento();
+			$bootstrap = new HTMLWriter();
 			if (file_exists($this->fullfilepath)) {
 				// JSON file will be false if an error occurred during file_get_contents or json_decode
 				$this->process_json();
@@ -232,7 +233,7 @@
 		 * @return string  HTML select
 		 */
 		public function generate_shownotesselect() {
-			$bootstrap = new Contento();
+			$bootstrap = new HTMLWriter();
 			$array = array();
 			foreach (DplusWire::wire('config')->yesnoarray as $key => $value) {
 				$array[$value] = $key;
@@ -245,15 +246,15 @@
 		============================================================ */
 		/**
 		 * Generates the celldata based of the column, column type and the json array it's in, looks at if the data is numeric
-		 * @param string $type the type of data D = Date, N = Numeric, string
 		 * @param string $parent the array in which the data is contained
-		 * @param string $column the key in which we use to look up the value
+		 * @param string $column the key in which we use to look up the value, may contain the type
+		 * @param string $type   the type of data D = Date, N = Numeric, string
 		 */
-		public static function generate_formattedcelldata($type, $parent, $column) {
-			$bootstrap = new Contento();
+		public static function generate_formattedcelldata($parent, $column, $type = '') {
+			$bootstrap = new HTMLWriter();
 			$celldata = '';
-			$qtyregex = "/(quantity)/i";
-
+			$type = isset($column['type']) ? $column['type'] : $type;
+			
 			if ($type == 'D') {
 				$celldata = (strlen($parent[$column['id']]) > 0) ? date($column['date-format'], strtotime($parent[$column['id']])) : $parent[$column['id']];
 			} elseif ($type == 'N') {
@@ -265,33 +266,10 @@
 			} else {
 				$celldata = $parent[$column['id']];
 			}
-
-			return $celldata;
-		}
-
-		/**
-		 * Returns the data formatted into appropriate formats
-		 * Ex. Tracking Columns will have a tracking link
-		 * @param  array $parent contains value
-		 * @param  string $column Name of Column
-		 * @return string         Value or HTML content
-		 */
-		public static function generate_celldata($parent, $column) {
-			if(in_array($column, self::$phonecolumns)) {
-				return self::generate_phoneurl($parent[$column]);
-			} else {
-				return $parent[$column];
+			if ($column['input']) {
+				$celldata = $bootstrap->input("class=form-control input-sm underlined|value=$celldata");
 			}
-		}
-
-
-		/**
-		 * Returns phone string for URL
-		 * @param  string $phone Phone Number
-		 * @return string        reformatted phone value
-		 */
-		public static function generate_phoneurl($phone) {
-			return str_replace('-', '', $phone);
+			return $celldata;
 		}
 
 		/* =============================================================

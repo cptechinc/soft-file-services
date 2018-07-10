@@ -22,7 +22,7 @@
 		 * @var array
 		 */
 		protected $emptytags = array(
-			'input', 'img', 'br'
+			'input', 'img', 'br', 'hr'
 		);
 
 	  /* =============================================================
@@ -283,5 +283,15 @@
 					$str.= $this->close('div');
 				$str.= $this->close('div');
 				return $str;
+			}
+			
+			public static function get_justifyclass($justification = 'left') {
+				$justifications = array(
+					'left' => 'text-left',
+					'right' => 'text-right',
+					'center' => 'text-center',
+				);
+				$justiciation = empty($justiciation) ? 'left' : $justification;
+				return $justifications[$justification];
 			}
 	}

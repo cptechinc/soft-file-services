@@ -1,10 +1,11 @@
 {
     "error": false,
     "errormsg": "",
+    "RGA Number": "1000",
     "file-type": "return-goods-authorization",
     "data": {
         "header": {
-            "RGA Number": "1",
+            "RGA Number": "1000",
             "Customer ID": "585643",
             "Customer Name": "EARNEST MACHINE PRODUCTS CO.",
             "Ship-To ID": "",

@@ -84,18 +84,30 @@
 		}
 		
 		/**
+		 * Returns the title for the document screen
+		 * @return string Document Title
+		 */
+		public function get_doctitle() {
+			return $this->title;
+		}
+		
+		/**
 		 * Returns an array with default formatting
 		 * @return array an array with default formatting
 		 */
 		public function get_defaultformattercolumn() {
 			return array(
 				"line" => 0,
-				"column"=> 0,
+				"column" => 0,
+				"type" => "C",
 				"col-length"=> 0,
 				"label"=> "Label",
 				"before-decimal"=> false,
 				"after-decimal"=> false,
-				"date-format"=> false
+				"date-format"=> false,
+				"input" => false,
+				"data-justify" => "left",
+				"label-justify" => "right"
 			);
 		}
 		
@@ -106,7 +118,7 @@
 		 * Generates and Sets tableblueprint property based on 
 		 * the input
 		 * @param  ProcessWire\WireInput $input Input with field definitions
-		 * @return [type]                      [description]
+		 * @return void
 		 */
 		public function generate_formatterfrominput(ProcessWire\WireInput $input) {
 			$this->formatter = false;
@@ -131,6 +143,9 @@
 					$colnumber = $input->post->int($postcolumn.'-column');
 					$label = $input->post->text($postcolumn.'-label');
 					$dateformat = $beforedecimal = $afterdecimal = false;
+					$justify_data = $input->post->text($postcolumn.'-justify-data');
+					$justify_label = $input->post->text($postcolumn.'-justify-label');
+					$is_input = $input->post->text($postcolumn.'-is-input');
 					
 					if ($this->fields['data'][$tablesection][$column]['type'] == 'D') {
 						$dateformat = $input->post->text($postcolumn.'-date-format');
@@ -140,13 +155,16 @@
 					}
 					
 					$postarray[$tablesection]['columns'][$column] = array(
-						'line' => $linenumber, 
-						'column' => $colnumber, 
-						'col-length' => $length, 
-						'label' => $label, 
-						'before-decimal' => $beforedecimal, 
-						'after-decimal' => $afterdecimal, 
-						'date-format' => $dateformat
+						'line' => $linenumber,
+						'column' => $colnumber,
+						'col-length' => $length,
+						'label' => $label,
+						'before-decimal' => $beforedecimal,
+						'after-decimal' => $afterdecimal,
+						'date-format' => $dateformat,
+						'input' => $is_input,
+						'data-justify' => $justify_data,
+						'label-justify' => $justify_label
 					);
 				}
 				
@@ -271,12 +289,16 @@
 						if ($this->formatter[$section]['columns'][$column]['line'] == $i) {
 							$col = array(
 								'id' => $column, 
-								'label' => $this->formatter[$section]['columns'][$column]['label'], 
-								'column' => $this->formatter[$section]['columns'][$column]['column'], 
-								'col-length' => $this->formatter[$section]['columns'][$column]['col-length'], 
+								'label' => $this->formatter[$section]['columns'][$column]['label'],
+								'column' => $this->formatter[$section]['columns'][$column]['column'],
+								'type' => $this->formatter[$section]['columns'][$column]['type'],
+								'col-length' => $this->formatter[$section]['columns'][$column]['col-length'],
 								'before-decimal' => $this->formatter[$section]['columns'][$column]['before-decimal'],
-								'after-decimal' => $this->formatter[$section]['columns'][$column]['after-decimal'], 
-								'date-format' => $this->formatter[$section]['columns'][$column]['date-format']
+								'after-decimal' => $this->formatter[$section]['columns'][$column]['after-decimal'],
+								'date-format' => $this->formatter[$section]['columns'][$column]['date-format'],
+								'input' => $this->formatter[$section]['columns'][$column]['input'],
+								'data-justify' => $this->formatter[$section]['columns'][$column]['data-justify'],
+								'label-justify' => $this->formatter[$section]['columns'][$column]['label-justify'],
 							 );
 							$table[$section]['rows'][$i]['columns'][$this->formatter[$section]['columns'][$column]['column']] = $col;
 						}
