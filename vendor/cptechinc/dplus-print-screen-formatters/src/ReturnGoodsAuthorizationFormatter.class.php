@@ -103,19 +103,22 @@
 			$tb->closetablesection('thead');
 
 			foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
-				$tb->tr();
-				for ($colnumber = 1; $colnumber < ($this->formatter['detail']['colcount'] + 1); $colnumber++) {
-					$column = $detailrow['columns'][$colnumber];
-					$celldata = $this->json['data']['detail'][$column['id']];
-					$colspan = $column['col-length'];
-					$class = HTMLWriter::get_justifyclass($column['data-justify']);
+				$linecount = sizeof($this->json['data']['detail']);
+				for ($i = 1; $i < $linecount + 1; $i++) {
+					$tb->tr();
+					for ($colnumber = 1; $colnumber < ($this->formatter['detail']['colcount'] + 1); $colnumber++) {
+						$column = $detailrow['columns'][$colnumber];
+						$celldata = $this->json['data']['detail'][$i][$column['id']];
+						$colspan = $column['col-length'];
+						$class = HTMLWriter::get_justifyclass($column['data-justify']);
 
-					if ($column['id'] == 'Item ID') {
-						$celldata .= "<br>".$this->json['data']['detail']['Item Description 1'];
-					} else {
-						$celldata = TableScreenMaker::generate_formattedcelldata($this->json['data']['detail'], $column);
+						if ($column['id'] == 'Item ID') {
+							$celldata .= "<br>".$this->json['data']['detail'][$i]['Item Description 1'];
+						} else {
+							$celldata = TableScreenMaker::generate_formattedcelldata($this->json['data']['detail'][$i], $column);
+						}
+						$tb->td("colspan=$colspan|class=$class", $celldata);
 					}
-					$tb->td("colspan=$colspan|class=$class", $celldata);
 				}
 			}
 			return $tb->close();
