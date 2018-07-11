@@ -102,9 +102,9 @@
 			}
 			$tb->closetablesection('thead');
 
-			foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
-				$linecount = sizeof($this->json['data']['detail']);
-				for ($i = 1; $i < $linecount + 1; $i++) {
+			$linecount = sizeof($this->json['data']['detail']);
+			for ($i = 1; $i < $linecount + 1; $i++) {
+				foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 					$tb->tr();
 					for ($colnumber = 1; $colnumber < ($this->formatter['detail']['colcount'] + 1); $colnumber++) {
 						$column = $detailrow['columns'][$colnumber];
