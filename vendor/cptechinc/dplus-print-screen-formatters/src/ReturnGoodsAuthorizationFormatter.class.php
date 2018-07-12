@@ -29,13 +29,14 @@
 
 			$content .= $bootstrap->open('div','class=row');
 			for ($i = 1; $i < 5; $i++) {
-				$content .= $bootstrap->div('class=col-sm-4 form-group', $this->generate_headersection($i));
+				$content .= $bootstrap->div('class=col-xs-4 form-group', $this->generate_headersection($i));
 			}
 			$content .= $bootstrap->close('div');
 			$content .= $this->generate_termsection();
 			$content .= $bootstrap->div('class=form-group', $this->generate_detailsection());
 			$content .= $bootstrap->h4('class=text-center', "** A copy of this Authorization must accompany this shipment **");
 			$content .= $bootstrap->hr('');
+			$content .= $bootstrap->footer('class=print', $this->generate_receivesection());
 			return $content;
 		}
 
@@ -49,7 +50,7 @@
 			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
 
-			$content = $bootstrap->open('div', 'class=row');
+			$content = $bootstrap->open('div', 'class=row header-repeat');
 				$content .= $bootstrap->open('div', 'class=col-xs-6 form-group');
 					$content .= $bootstrap->h3('', $this->title);
 					$content .= $bootstrap->h4('', 'RGA #'. $this->json['RGA Number']);
@@ -134,12 +135,6 @@
 				}
 			}
 			$tb->closetablesection('tbody');
-			$tb->tablesection('tfoot');
-				$tb->tr();
-				$tb->td('', 'Received by: ')->td('colspan=2', $bootstrap->input('class=form-control input-sm underlined price'));
-				$tb->td('', 'Date: ')->td('colspan=2', $bootstrap->input('class=form-control input-sm underlined price'));
-				$tb->td('colspan='.$this->formatter['detail']['colcount'] - 6, '');
-			$tb->closetablesection('tfoot');
 			return $tb->close();
 		}
 
@@ -161,10 +156,14 @@
 		 */
 		protected function generate_receivesection() {
 			$bootstrap = new HTMLWriter();
+			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
+			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
 			$tb = new Table('class=table table-condensed table-striped');
 			$tb->tr();
-			$tb->td('', 'Received by: ')->td('', $bootstrap->input('class=form-control input-sm underlined price'));
-			$tb->td('', 'Date: ')->td('', $bootstrap->input('class=form-control input-sm underlined price'));
+			$tb->td('', $bootstrap->label('', 'Received by: ').$bootstrap->input('class=form-control input-sm underlined price'));
+			$tb->td('', $bootstrap->label('', 'Date: ').$bootstrap->input('class=form-control input-sm underlined price'));
+			$tb->td('', $bootstrap->label('', 'RGA #'.$this->json['RGA Number']).$bootstrap->img("src=data:image/png;base64,$barcode_base64|class=img-responsive|alt=RGA # Barcode"));
+			$tb->td('', $bootstrap->label('', 'Customer: ').$bootstrap->p('class=form-control-static', $this->json['data']['header']['Customer Name']));
 			return $tb->close();
 		}
 

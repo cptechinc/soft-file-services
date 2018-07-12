@@ -19,6 +19,7 @@ include_once($config->paths->vendor."cptechinc/dplus-processwire/vendor/autoload
 include_once($config->paths->vendor."cptechinc/dplus-content/vendor/autoload.php");
 include_once($config->paths->vendor."cptechinc/dplus-order-classes/vendor/autoload.php");
 include_once($config->paths->vendor."cptechinc/dplus-print-screen-formatters/vendor/autoload.php");
+include_once($config->paths->vendor."cptechinc/dplus-file-services/vendor/autoload.php");
 
 $page->stringerbell = new StringerBell();
 $page->htmlwriter = new HTMLWriter();

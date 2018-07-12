@@ -14,7 +14,8 @@
 			'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'i', 'b', 'strong', 'code', 'pre', 'small',
 			'div', 'nav', 'ol', 'ul', 'li', 'button',
 			'table', 'tr', 'td', 'th', 'thead', 'tbody', 'tfoot',
-			'textarea', 'option', 'label', 'a', 'form', 'script'
+			'textarea', 'option', 'label', 'a', 'form', 'script',
+			'header', 'footer', 'article'
 		);
 
 		/**

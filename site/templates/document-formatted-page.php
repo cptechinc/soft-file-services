@@ -2,7 +2,7 @@
 	// Create and setup formatter
 	$requestmethod = strtolower($input->requestMethod()); // get | post
 	$formatter = $page->formatterfactory->generate_formatter($page->name);
-	$formatter->set('sessionID', session_id());
+	$formatter->set('sessionID', $input->get->text('fileID'));
 	
 	// Set debug if needed
 	if ($input->$requestmethod->debug || $input->$requestmethod->text('action') == 'preview') {
@@ -29,7 +29,15 @@
 		}
 	} else {
 		$page->body .= $page->htmlwriter->alertpanel('warning', 'Requested data does not exist');
-	}	
+	}
+	
+	if (!$input->get->text('view') == 'pdf') {
+		$url = new Purl\Url($page->fullURL->getUrl());
+		$url->query->set('view', 'pdf');
+		$pdfmaker = new PDFMaker($input->get->text('fileID'), $page->name, $url->getUrl());
+		$pdfmaker->add_pagenumber();
+		$pdfmaker->process();
+	}
 ?>
 <?php include('./_head-blank.php'); ?>
 	<div class="container page print">
