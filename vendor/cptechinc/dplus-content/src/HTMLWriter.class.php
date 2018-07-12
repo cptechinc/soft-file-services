@@ -11,7 +11,7 @@
 		 * @var array
 		 */
 		protected $closeable = array(
-			'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'i', 'b', 'strong', 'code', 'pre',
+			'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'i', 'b', 'strong', 'code', 'pre', 'small',
 			'div', 'nav', 'ol', 'ul', 'li', 'button',
 			'table', 'tr', 'td', 'th', 'thead', 'tbody', 'tfoot',
 			'textarea', 'option', 'label', 'a', 'form', 'script'

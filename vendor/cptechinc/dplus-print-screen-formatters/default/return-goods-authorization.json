@@ -323,16 +323,16 @@
 				"label-justify": "left"
             },
             "Unit of Measure": {
-                "line": 0,
-                "column": 0,
+                "line": 1,
+                "column": 3,
                 "col-length": 1,
                 "label": "UoM",
                 "before-decimal": false,
                 "after-decimal": false,
                 "date-format": false,
 				"input": false,
-				"data-justify": "left",
-				"label-justify": "left"
+				"data-justify": "center",
+				"label-justify": "center"
             },
             "Original Warehouse ID": {
                 "line": 0,
@@ -372,7 +372,7 @@
             },
             "Reason Code": {
                 "line": 1,
-                "column": 6,
+                "column": 7,
                 "col-length": 1,
                 "label": "Reason Code",
                 "before-decimal": false,
@@ -408,7 +408,7 @@
             },
             "Quantity To Return": {
                 "line": 1,
-                "column": 3,
+                "column": 4,
                 "col-length": 1,
                 "label": "Qty to Return",
                 "before-decimal": 7,
@@ -420,7 +420,7 @@
             },
             "Quantity Recieved": {
                 "line": 1,
-                "column": 4,
+                "column": 5,
                 "col-length": 1,
                 "label": "Qty Received",
                 "before-decimal": 7,
@@ -432,7 +432,7 @@
             },
             "Unit Price": {
                 "line": 1,
-                "column": 5,
+                "column": 6,
                 "col-length": 1,
                 "label": "Unit Price",
                 "before-decimal": 7,

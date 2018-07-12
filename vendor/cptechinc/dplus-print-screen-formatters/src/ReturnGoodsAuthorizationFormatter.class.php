@@ -32,9 +32,10 @@
 				$content .= $bootstrap->div('class=col-sm-4 form-group', $this->generate_headersection($i));
 			}
 			$content .= $bootstrap->close('div');
+			$content .= $this->generate_termsection();
 			$content .= $bootstrap->div('class=form-group', $this->generate_detailsection());
+			$content .= $bootstrap->h4('class=text-center', "** A copy of this Authorization must accompany this shipment **");
 			$content .= $bootstrap->hr('');
-			$content .= $this->generate_footersection();
 			return $content;
 		}
 
@@ -53,6 +54,8 @@
 					$content .= $bootstrap->h3('', $this->title);
 					$content .= $bootstrap->h4('', 'RGA #'. $this->json['RGA Number']);
 					$content .= $bootstrap->div('', $bootstrap->img("src=data:image/png;base64,$barcode_base64|class=img-responsive|alt=RGA # Barcode"));
+					$content .= $bootstrap->br();
+					$content .= $bootstrap->p('class=strong', "A copy of this Authorization must accompany this shipment");
 				$content .= $bootstrap->close('div');
 				$content .= $bootstrap->open('div', 'class=col-xs-4 form-group pull-right');
 					$imgsrc = DplusWire::wire('pages')->get('/config/')->company_logo->url;
@@ -90,7 +93,7 @@
 		 */
 		protected function generate_detailsection() {
 			$bootstrap = new HTMLWriter();
-			$tb = new Table('class=table table-condensed table-striped');
+			$tb = new Table('class=table table-condensed table-striped|id=rga-table');
 			$tb->tablesection('thead');
 			foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 				$tb->tr();
@@ -101,44 +104,68 @@
 				}
 			}
 			$tb->closetablesection('thead');
-
+			$tb->tablesection('tbody');
 			$linecount = sizeof($this->json['data']['detail']);
+			$this->formatter['detail']['colcount'] = $this->formatter['detail']['colcount'] > 6 ? $this->formatter['detail']['colcount'] : 6;
+			
 			for ($i = 1; $i < $linecount + 1; $i++) {
 				foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 					$tb->tr();
 					for ($colnumber = 1; $colnumber < ($this->formatter['detail']['colcount'] + 1); $colnumber++) {
-						$column = $detailrow['columns'][$colnumber];
-						$celldata = $this->json['data']['detail'][$i][$column['id']];
-						$colspan = $column['col-length'];
-						$class = HTMLWriter::get_justifyclass($column['data-justify']);
+						if (isset($detailrow['columns'][$i])) {
+							$column = $detailrow['columns'][$colnumber];
+							$celldata = $this->json['data']['detail'][$i][$column['id']];
+							$colspan = $column['col-length'];
+							$class = HTMLWriter::get_justifyclass($column['data-justify']);
 
-						if ($column['id'] == 'Item ID') {
-							$celldata .= "<br>".$this->json['data']['detail'][$i]['Item Description 1'];
+							if ($column['id'] == 'Item ID') {
+								$celldata .= "<br>".$bootstrap->span('class=description-small', ($this->json['data']['detail'][$i]['Item Description 1']));
+							} else {
+								$celldata = TableScreenMaker::generate_formattedcelldata($this->json['data']['detail'][$i], $column);
+							}
+							$tb->td("colspan=$colspan|class=$class", $celldata);
 						} else {
-							$celldata = TableScreenMaker::generate_formattedcelldata($this->json['data']['detail'][$i], $column);
+							if ($columncount < $this->tableblueprint['detail']['cols']) {
+								$colspan = 1;
+								$tb->td();
+							}
 						}
-						$tb->td("colspan=$colspan|class=$class", $celldata);
 					}
 				}
 			}
+			$tb->closetablesection('tbody');
+			$tb->tablesection('tfoot');
+				$tb->tr();
+				$tb->td('', 'Received by: ')->td('colspan=2', $bootstrap->input('class=form-control input-sm underlined price'));
+				$tb->td('', 'Date: ')->td('colspan=2', $bootstrap->input('class=form-control input-sm underlined price'));
+				$tb->td('colspan='.$this->formatter['detail']['colcount'] - 6, '');
+			$tb->closetablesection('tfoot');
 			return $tb->close();
 		}
 
 		/**
-		 * Returns the HTML for the footer section of the document
-		 * Includes the Lines for Date and Received by
+		 * Returns the HTML for the terms section of the document
 		 * @return string HTML Content
 		 */
-		protected function generate_footersection() {
+		protected function generate_termsection() {
 			$bootstrap = new HTMLWriter();
-			$content = $bootstrap->div('class=form-group', DplusWire::wire('pages')->get("/config/documents/$this->type/")->terms);
+			$terms = $bootstrap->div('class=form-group', DplusWire::wire('pages')->get("/config/documents/$this->type/")->terms);
+			$content = str_replace(array('{shipvia}', '{shipviaacct}'), array($this->json['data']['header']['Return Ship Via Desc'], $this->json['data']['header']['Return Ship Account Nbr']), $terms);
 			$content .= $bootstrap->br();
+			return $content;
+		}
+		
+		/**
+		 * Returns Lines for Date and Received by
+		 * @return string HTML Content
+		 */
+		protected function generate_receivesection() {
+			$bootstrap = new HTMLWriter();
 			$tb = new Table('class=table table-condensed table-striped');
 			$tb->tr();
 			$tb->td('', 'Received by: ')->td('', $bootstrap->input('class=form-control input-sm underlined price'));
 			$tb->td('', 'Date: ')->td('', $bootstrap->input('class=form-control input-sm underlined price'));
-			$content .= $tb->close();
-			return $content;
+			return $tb->close();
 		}
 
 
