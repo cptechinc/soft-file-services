@@ -1,4 +1,4 @@
-<form action="<?= $page->fullURL; ?>" method="POST" class="screen-formatter-form" id="screen-formatter-form">
+<form action="<?= $page->fullURL; ?>" method="POST" class="print-formatter-form" id="print-formatter-form">
     <input type="hidden" name="action" value="save-formatter">
 	<input type="hidden" name="user" value="<?= $user->loginid; ?>">
 	<div class="panel panel-default">
@@ -27,6 +27,5 @@
 			</div>
 		</div>
 	</div>
-	<button type="button" class="btn btn-info" onclick="preview_tableformatter()"><i class="fa fa-table" aria-hidden="true"></i> Preview Table</button>
+	<button type="button" class="btn btn-info" onclick="preview_tableformatter('#print-formatter-form')"><i class="fa fa-table" aria-hidden="true"></i> Preview Table</button>
 </form>
-<?php echo var_dump(json_decode(file_get_contents(TableScreenFormatter::$fieldfiledir."$formatter->type.json"), true)); ?>

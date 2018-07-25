@@ -36,3 +36,31 @@ $(document).ready(function() {
 			}
 		});
 });
+
+function preview_tableformatter(formatterform) {
+	var form = $(formatterform);
+	form.find('[name=action]').val('preview');
+	
+	form.postform({jsoncallback: true, html: true}, function(html) {
+		var title = form.find('.panel-title').text();
+		$(config.modals.ajax).find('.modal-body').addClass('modal-results').html(html);
+		$(config.modals.ajax).find('.modal-title').text('Previewing ' + title + ' Formatter');
+		$(config.modals.ajax).resizemodal('xl').modal();
+	});
+}
+
+$.fn.extend({
+	postform: function(options, callback) { //{formdata: data/false, jsoncallback: true/false, action: true/false}
+		var form = $(this);
+		console.log('submitting ' + form.attr('id'));
+		if (!options.action) {options.action = form.attr('action');}
+		if (!options.formdata) {options.formdata = form.serialize();}
+		if (options.jsoncallback) {
+			$.post(options.action, options.formdata, function(json) {callback(json);});
+		} else if (options.html) {
+			$.post(options.action, options.formdata, function(html) {callback(html);});
+		} else {
+			$.post(options.action, options.formdata).done(function() {callback();});
+		}
+	}
+});

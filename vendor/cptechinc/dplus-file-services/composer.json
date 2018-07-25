@@ -7,7 +7,10 @@
 	"autoload": {
 		"files": [
 			"src/DplusEmailer.class.php",
-            "src/PDFMaker.class.php"
+            "src/PDFMaker.class.php",
+			"src/UploadedFile.class.php",
+			"src/FileUploader.class.php",
+			"src/SpreadSheetWriter.class.php"
 		]
 	}
 }

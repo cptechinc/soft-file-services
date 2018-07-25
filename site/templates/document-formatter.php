@@ -10,7 +10,13 @@
         switch ($action) {
             case 'save-formatter':
 				$maxid = get_maxtableformatterid($user->loginid, $formatter->type);
-				$page->body = $tableformatter->save_andrespond();
+				$page->body = $formatter->save_andrespond();
+				include ("./_json.php");
+				break;
+			case 'preview':
+				$formatter->set_userid('preview');
+				$formatter->save();
+				$page->body = $formatter->save_andrespond();
 				include ("./_json.php");
 				break;
         }

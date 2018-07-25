@@ -192,7 +192,37 @@
                 "Reason Description": "Quality of the Parts",
                 "Reason Comment": "",
                 "Quantity To Return": "1.00",
-                "Unit Price": "312.00",
+                "Unit Price": "313.00",
+                "To Return Amount": "312.00"
+            },
+            "12": {
+                "Item ID": "bev",
+                "Item Description 1": "DESCRIPTION FOR BEV&R",
+                "Item Description 2": "SECOND DESCRIPTION FOR BEV",
+                "Unit of Measure": "EA",
+                "Original Warehouse ID": "EA",
+                "Original Warehouse Name": "Eagan Warehouse",
+                "Original Invoice Number": "1000005500",
+                "Reason Code": "Q PART",
+                "Reason Description": "Quality of the Parts",
+                "Reason Comment": "",
+                "Quantity To Return": "1.00",
+                "Unit Price": "313.00",
+                "To Return Amount": "312.00"
+            },
+            "13": {
+                "Item ID": "bev",
+                "Item Description 1": "DESCRIPTION FOR BEV&R",
+                "Item Description 2": "SECOND DESCRIPTION FOR BEV",
+                "Unit of Measure": "EA",
+                "Original Warehouse ID": "EA",
+                "Original Warehouse Name": "Eagan Warehouse",
+                "Original Invoice Number": "1000005500",
+                "Reason Code": "Q PART",
+                "Reason Description": "Quality of the Parts",
+                "Reason Comment": "",
+                "Quantity To Return": "1.00",
+                "Unit Price": "313.00",
                 "To Return Amount": "312.00"
             }
         },

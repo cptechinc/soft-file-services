@@ -1,24 +1,31 @@
-<html>
-<head>
-<style>
-div.header {
-    display: block; text-align: center; 
-    position: running(header);
-}
-div.footer {
-    display: block; text-align: center;
-    position: running(footer);
-}
-@page {
-    @top-center { content: element(header) }
-}
-@page { 
-    @bottom-center { content: element(footer) }
-}
-</style>
-</head>
-<body>
-    <div class='header'>Header</div>
-    <div class='footer'>Footer</div>
-</body>
-</html>
+<?php 
+    if ($input->requestMethod('POST')) {
+        $fileuploader = new FileUploader();
+        $uploaded = $fileuploader->upload($_FILES, $input->post->text('filename'));
+        
+        
+        if ($uploaded) {
+            $spreadsheetwriter = new SpreadSheetWriter();
+            $spreadsheetwriter->convert_filetouppercase($fileuploader->file, $input->post->text('file-extension'));
+            
+            if (file_exists($spreadsheetwriter->outputfile->get_filepath())) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename='.basename($spreadsheetwriter->outputfile->get_filepath()));
+                header('Content-Transfer-Encoding: binary');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($spreadsheetwriter->outputfile->get_filepath()));
+                ob_clean();
+                flush();
+                readfile($spreadsheetwriter->outputfile->get_filepath());
+                exit;
+            } 
+        } else {
+            echo implode("<br>", $fileuploader->errors);
+        }
+    } else {
+        $page->body = $config->paths->content."file-uploader/form.php";
+        include ('./_include-page.php');
+    }

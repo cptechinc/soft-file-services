@@ -3,6 +3,11 @@
 	$requestmethod = strtolower($input->requestMethod()); // get | post
 	$formatter = $page->formatterfactory->generate_formatter($page->name);
 	$formatter->set('sessionID', $input->get->text('fileID'));
+	$formatter->set_userid($user->name);
+	
+	if ($input->get->text('preview') == 'preview') {
+		$formatter->set_userid('preview');
+	}
 	
 	// Set debug if needed
 	if ($input->$requestmethod->debug || $input->$requestmethod->text('action') == 'preview') {

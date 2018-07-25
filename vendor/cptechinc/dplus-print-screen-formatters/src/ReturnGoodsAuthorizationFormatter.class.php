@@ -106,14 +106,14 @@
 			}
 			$tb->closetablesection('thead');
 			$tb->tablesection('tbody');
-			$linecount = sizeof($this->json['data']['detail']);
+			
 			$this->formatter['detail']['colcount'] = $this->formatter['detail']['colcount'] > 6 ? $this->formatter['detail']['colcount'] : 6;
 			
-			for ($i = 1; $i < $linecount + 1; $i++) {
+			for ($i = 1; $i < sizeof($this->json['data']['detail']) + 1; $i++) {
 				foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 					$tb->tr();
 					for ($colnumber = 1; $colnumber < ($this->formatter['detail']['colcount'] + 1); $colnumber++) {
-						if (isset($detailrow['columns'][$i])) {
+						if (isset($detailrow['columns'][$colnumber])) {
 							$column = $detailrow['columns'][$colnumber];
 							$celldata = $this->json['data']['detail'][$i][$column['id']];
 							$colspan = $column['col-length'];
