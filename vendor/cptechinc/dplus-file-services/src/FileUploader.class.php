@@ -1,4 +1,7 @@
 <?php
+    /**
+     * Class to handle File Uploading from $_FILES array and moves it to a 
+     */
     class FileUploader {
         use ThrowErrorTrait;
 		use MagicMethodTraits;
