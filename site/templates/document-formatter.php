@@ -4,7 +4,7 @@
 	$formatter = $page->formatterfactory->generate_formatter($page->name);
     
     if ($requestmethod == 'post') {
-        $tableformatter->generate_formatterfrominput($input);
+        $formatter->generate_formatterfrominput($input);
         $action = $input->post->text('action');
         
         switch ($action) {
@@ -15,12 +15,11 @@
 				break;
 			case 'preview':
 				$formatter->set_userid('preview');
-				$formatter->save();
 				$page->body = $formatter->save_andrespond();
 				include ("./_json.php");
 				break;
         }
     } else {
-        $page->body = $config->paths->content."formatters/forms/edit-formatter.php";
+		$page->body = $config->paths->content."formatters/forms/edit-formatter.php";
         include ("./_include-page.php");
     }

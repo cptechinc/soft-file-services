@@ -1,7 +1,7 @@
 {
     "header": {
         "RGA Number": {
-            "type": "N"
+            "type": "C"
         },
         "Customer ID": {
             "type": "C"
@@ -90,7 +90,7 @@
             "type": "C"
         },
         "Original Invoice Number": {
-            "type": "N"
+            "type": "C"
         },
         "Reason Code": {
             "type": "C"

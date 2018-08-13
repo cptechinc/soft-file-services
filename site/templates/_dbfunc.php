@@ -56,11 +56,11 @@
 	 * @return array             Response array
 	 */
 	function update_formatter($formatter, $userID = 'default', $data, $debug = false) {
-		$q = (new QueryBuilder())->table('tableformatter');
+		$q = (new QueryBuilder())->table('formatter_print');
 		$q->mode('update');
 		$q->set('data', $data);
 		$q->where('user', $userID);
-		$q->where('formattertype', $formatter);
+		$q->where('type', $formatter);
 		$sql = DplusWire::wire('database')->prepare($q->render());
 
 		if ($debug) {
@@ -80,11 +80,11 @@
 	 * @return array             Response array
 	 */
 	function create_formatter($formatter, $userID = 'default', $data, $debug = false) {
-		$q = (new QueryBuilder())->table('tableformatter');
+		$q = (new QueryBuilder())->table('formatter_print');
 		$q->mode('insert');
 		$q->set('data', $data);
 		$q->set('user', $userID);
-		$q->set('formattertype', $formatter);
+		$q->set('type', $formatter);
 		$sql = DplusWire::wire('database')->prepare($q->render());
 
 		if ($debug) {

@@ -50,15 +50,15 @@
 			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
 
-			$content = $bootstrap->open('div', 'class=row header-repeat');
-				$content .= $bootstrap->open('div', 'class=col-xs-6 form-group');
+			$content = $bootstrap->open('div', 'class=row');
+				$content .= $bootstrap->open('div', 'class=col-sm-6 form-group');
 					$content .= $bootstrap->h3('', $this->title);
 					$content .= $bootstrap->h4('', 'RGA #'. $this->json['RGA Number']);
 					$content .= $bootstrap->div('', $bootstrap->img("src=data:image/png;base64,$barcode_base64|class=img-responsive|alt=RGA # Barcode"));
 					$content .= $bootstrap->br();
 					$content .= $bootstrap->p('class=strong', "A copy of this Authorization must accompany this shipment");
 				$content .= $bootstrap->close('div');
-				$content .= $bootstrap->open('div', 'class=col-xs-4 form-group pull-right');
+				$content .= $bootstrap->open('div', 'class=col-sm-6 form-group text-right');
 					$imgsrc = DplusWire::wire('pages')->get('/config/')->company_logo->url;
 					$company = DplusWire::wire('pages')->get('/config/')->company_displayname;
 					$content .= $bootstrap->img("class=img-repsonsive|src=$imgsrc|alt=$company logo");
@@ -160,7 +160,7 @@
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
 			$tb = new Table('class=table table-condensed table-striped');
 			$tb->tr();
-			$tb->td('', $bootstrap->label('', 'Received by: ').$bootstrap->input('class=form-control input-sm underlined price'));
+			$tb->td('', $bootstrap->label('', 'Received by: ').$bootstrap->input('class=form-control form-control-sm underlined price'));
 			$tb->td('', $bootstrap->label('', 'Date: ').$bootstrap->input('class=form-control input-sm underlined price'));
 			$tb->td('', $bootstrap->label('', 'RGA #'.$this->json['RGA Number']).$bootstrap->img("src=data:image/png;base64,$barcode_base64|class=img-responsive|alt=RGA # Barcode"));
 			$tb->td('', $bootstrap->label('', 'Customer: ').$bootstrap->p('class=form-control-static', $this->json['data']['header']['Customer Name']));

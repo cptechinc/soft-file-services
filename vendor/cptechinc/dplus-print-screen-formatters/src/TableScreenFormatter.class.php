@@ -126,8 +126,8 @@
 		 */
 		public function generate_formatterfrominput(ProcessWire\WireInput $input) {
 			$this->formatter = false;
-			$postarray = $table = array('cols' => 0);
-			$tablesections = array_keys($this->fields['data']);
+			$postarray = $table = array('colcount' => 0);
+			$tablesections = array_keys($this->fields);
 			
 			if ($input->post->user) {
 				$userID = $input->post->text('user');
@@ -136,11 +136,12 @@
 				$this->set_userid(DplusWire::wire('user')->loginid);
 			}
 			
+			
 			foreach ($tablesections as $tablesection) {
-				$postarray[$tablesection] = array('rows' => 0, 'columns' => array());
-				$table[$tablesection] = array('maxrows' => 0, 'rows' => array());
+				$postarray[$tablesection] = array('rows' => 0, 'colcount' => 0, 'columns' => array());
+				$table[$tablesection] = array('rowcount' => 0, 'rows' => array());
 				
-				foreach (array_keys($this->fields['data'][$tablesection]) as $column) {
+				foreach (array_keys($this->fields[$tablesection]) as $column) {
 					$postcolumn = str_replace(' ', '', $column);
 					$linenumber = $input->post->int($postcolumn.'-line');
 					$length = $input->post->int($postcolumn.'-length');
@@ -151,9 +152,9 @@
 					$justify_label = $input->post->text($postcolumn.'-justify-label');
 					$is_input = $input->post->text($postcolumn.'-is-input');
 					
-					if ($this->fields['data'][$tablesection][$column]['type'] == 'D') {
+					if ($this->fields[$tablesection][$column]['type'] == 'D') {
 						$dateformat = $input->post->text($postcolumn.'-date-format');
-					} elseif ($this->fields['data'][$tablesection][$column]['type'] == 'N') {
+					} elseif ($this->fields[$tablesection][$column]['type'] == 'N') {
 						$beforedecimal = $input->post->int($postcolumn.'-before-decimal');
 						$afterdecimal = $input->post->int($postcolumn.'-after-decimal');
 					}
@@ -187,7 +188,7 @@
 						}
 					}
 				}
-				
+
 				foreach ($table[$tablesection]['rows'] as $row) {
 					$columncount = 0;
 					$maxcolumn = 0;
@@ -196,9 +197,11 @@
 						$maxcolumn = $column['column'] > $maxcolumn ? $column['column'] : $maxcolumn;
 					}
 					$columncount = ($maxcolumn > $columncount) ? $maxcolumn : $columncount;
-					$postarray['cols'] = ($columncount > $postarray['cols']) ? $columncount : $postarray['cols'];
+					$postarray[$tablesection]['colcount'] = $columncount;
+					$postarray['colcount'] = ($columncount > $postarray['colcount']) ? $columncount : $postarray['colcount'];
 				}
 			}
+			
 			$this->formatter = $postarray;
 			$this->source = 'input';
 			$this->generate_tableblueprint();
@@ -209,11 +212,12 @@
 		 * @return array         Response array
 		 */
 		public function save($debug = false) {
-			$userID = DplusWire::wire('user')->loginid;
-			$userpermission = DplusWire::wire('pages')->get('/config/')->allow_userscreenformatter;
-			$userpermission = (!empty($userpermission)) ? $userpermission : DplusWire::wire('users')->get("name=$userID")->hasPermission('setup-screen-formatter');
+			if ($this->userID != 'preview') {
+				$userpermission = DplusWire::wire('pages')->get('/config/print/')->allow_userprintformatter;
+				$userpermission = (!empty($userpermission)) ? $userpermission : DplusWire::wire('users')->get("name=$this->userID")->hasPermission('setup-print-formatter');
+			}
 			
-			if ($this->does_userhaveformatter()) {
+			if ($this->does_printformatterexist() ) {
 				return $this->update($debug);
 			} else {
 				return $this->create($debug);
@@ -235,7 +239,7 @@
 						'notifytype' => 'success',
 						'action' => $response['querytype'],
 						'message' => $msg,
-						'icon' => 'glyphicon glyphicon-floppy-disk',
+						'icon' => 'fa fa-floppy-o',
 					)
 				);
 			} else {
@@ -246,7 +250,7 @@
 						'notifytype' => 'danger',
 						'action' => $response['querytype'],
 						'message' => $msg,
-						'icon' => 'glyphicon glyphicon-warning-sign',
+						'icon' => 'fa fa-exclamation-triangle',
 					)
 				);
 			}
@@ -271,12 +275,19 @@
 		/* =============================================================
 			CLASS FUNCTIONS
 		============================================================ */
+		public function generate_previewurl() {
+			$url = new Purl\Url(DplusWire::wire('pages')->get("template=document-formatted-page,name=$this->type")->url);
+			$url->query->set('preview', 'preview');
+			$url->query->set('debug', 'debug');
+			return $url->getUrl();
+		}
+		
 		/**
 		 * Parses through the formatter array and sets the tableblueprint
 		 * @return void
 		 */
 		protected function generate_tableblueprint() {
-			$tablesections = array_keys($this->fields['data']);
+			$tablesections = array_keys($this->fields);
 			$table = array('colcount' => $this->formatter['colcount']);
 			
 			foreach ($tablesections as $section) {

@@ -25,10 +25,13 @@ $page->stringerbell = new StringerBell();
 $page->htmlwriter = new HTMLWriter();
 
 $config->styles->append(hashtemplatefile('styles/bootstrap.min.css'));
-$config->styles->append(hashtemplatefile('styles/libs/libraries.css'));
+$config->styles->append(hashtemplatefile('styles/libs/font-awesome.min.css'));
 $config->styles->append(hashtemplatefile('styles/styles.css'));
 
-$config->scripts->append(hashtemplatefile('scripts/libs/libraries.js'));
+$config->scripts->append(hashtemplatefile('scripts/libs/jquery.js'));
+$config->scripts->append(hashtemplatefile('scripts/libs/popper.js'));
+$config->scripts->append(hashtemplatefile('scripts/libs/bootstrap.min.js'));
+$config->scripts->append(hashtemplatefile('scripts/libs/bootstrap-notify.min.js'));
 $config->scripts->append(hashtemplatefile('scripts/scripts.js'));
 
 $appconfig = $pages->get('/config/');
