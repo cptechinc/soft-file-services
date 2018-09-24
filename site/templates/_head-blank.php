@@ -10,7 +10,7 @@
         	<link rel="stylesheet" type="text/css" href="<?= $css; ?>" />
         <?php endforeach; ?>
         
-        <script src="<?= hashtemplatefile('scripts/libs/jquery.js'); ?>"></script>
+        <script src="<?= hash_templatefile('scripts/libs/jquery.js'); ?>"></script>
 		<?php include $config->paths->content.'common/phpjs/js-config.js.php'; ?>
 	</head>
     <body class="fuelux no-nav">

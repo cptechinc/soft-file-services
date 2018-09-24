@@ -50,6 +50,12 @@
         protected $directory;
         
         /**
+         * File Name without extension
+         * @var string
+         */
+        protected $filename;
+        
+        /**
          * Instantiates an Instance from array, specifically meant to be used for the $_FILES array
          * @param  array        $files $_FILES array
          * @param  string       $input Input name
@@ -62,8 +68,33 @@
             $file->set('size', $files[$input]['size']);
             $file->set('tmpname', $files[$input]['tmp_name']);
             $file->set('type', $files[$input]['type']);
+            $file->set('filename', strtolower(reset(explode('.', $file->name))));
             $file->set('extension', strtolower(end(explode('.', $file->name))));
+            
             return $file;
+        }
+        
+        public static function create_fromuploadedfile($filename, $directory = '') {
+            $file = new UploadedFile();
+            if (!empty($directory)) {
+                $file->set('directory', $directory);
+            }
+            $file->set('name', $filename);
+            $file->set('originalname', $filename);
+            $fileinfo = pathinfo($file->get_filepath());
+            $file->set('extension', $fileinfo['extension']);
+            $file->set('filename', $fileinfo['filename']);
+            return $file;
+        }
+        
+        public static function json_exists($filename, $directory = '') {
+            $directory = !empty($directory) ? $directory : DplusWire::wire('config')->jsonfilepath;
+            return file_exists($directory . $filename);
+        }
+        
+        public static function file_exists($filename, $directory = '') {
+            $directory = !empty($directory) ? $directory : DplusWire::wire('config')->documentstoragedirectory;
+            return file_exists($directory . $filename);
         }
         
         /**

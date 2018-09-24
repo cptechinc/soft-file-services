@@ -1,7 +1,7 @@
 <?php
 	// Create and setup formatter
 	$requestmethod = strtolower($input->requestMethod()); // get | post
-	$formatter = $page->formatterfactory->generate_formatter($page->name);
+	$formatter = $page->formatterfactory->get_formatter($page->name);
     
     if ($requestmethod == 'post') {
         $formatter->generate_formatterfrominput($input);
