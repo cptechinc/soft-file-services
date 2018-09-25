@@ -3,7 +3,7 @@
 		protected $tabletype = 'grid'; // grid or normal
 		protected $type = 'return-goods-authorization'; // ii-sales-history
 		protected $title = 'Return Goods Authorization';
-		protected $datafilename = 'return-goods-authorization'; // iisaleshist.json
+		protected $datafilename = 'rga'; // rga.json
 		protected $testprefix = 'rga-return-goods-authorization'; // iish
 		protected $datasections = array(
 			"header" => "Header",
@@ -29,7 +29,7 @@
 
 			$content .= $bootstrap->open('div','class=row');
 			for ($i = 1; $i < 5; $i++) {
-				$content .= $bootstrap->div('class=col-xs-4 form-group', $this->generate_headersection($i));
+				$content .= $bootstrap->div('class=col-xs-4', $this->generate_headersection($i));
 			}
 			$content .= $bootstrap->close('div');
 			$content .= $this->generate_termsection();
@@ -49,21 +49,24 @@
 			$bootstrap = new HTMLWriter();
 			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
-
-			$content = $bootstrap->open('div', 'class=row header-repeat');
-				$content .= $bootstrap->open('div', 'class=col-xs-6 form-group');
+			$companydata = $this->json['data']['header'];
+			
+			$content = $bootstrap->open('div', 'class=row');
+				$content .= $bootstrap->open('div', 'class=col-xs-6');
 					$content .= $bootstrap->h3('', $this->title);
 					$content .= $bootstrap->h4('', 'RGA #'. $this->json['RGA Number']);
 					$content .= $bootstrap->div('', $bootstrap->img("src=data:image/png;base64,$barcode_base64|class=img-responsive|alt=RGA # Barcode"));
 					$content .= $bootstrap->br();
-					$content .= $bootstrap->p('class=strong', "A copy of this Authorization must accompany this shipment");
+					//$content .= $bootstrap->p('class=strong', "A copy of this Authorization must accompany this shipment");
 				$content .= $bootstrap->close('div');
-				$content .= $bootstrap->open('div', 'class=col-xs-4 form-group pull-right');
-					$imgsrc = DplusWire::wire('pages')->get('/config/')->company_logo->url;
-					$company = DplusWire::wire('pages')->get('/config/')->company_displayname;
-					$content .= $bootstrap->img("class=img-repsonsive|src=$imgsrc|alt=$company logo");
-					$content .= $bootstrap->h4('', $company);
-					$content .= $bootstrap->p('', DplusWire::wire('pages')->get('/config/')->company_address);
+				$content .= $bootstrap->open('div', 'class=col-xs-6 text-right');
+					//$imgsrc = DplusWire::wire('pages')->get('/config/')->company_logo->url;
+					//$company = DplusWire::wire('pages')->get('/config/')->company_displayname;
+					//$content .= $bootstrap->img("class=img-repsonsive|src=$imgsrc|alt=$company logo");
+					$content .= $bootstrap->h4('', $companydata['Return Warehouse Name']);
+					$address = $companydata['Return Whse Address 1']."<br>".$companydata['Return Whse Address 2']."<br>".$companydata['Return Whse Address 3'];
+					$address .= "<br>".$bootstrap->b('', 'Phone: ').$companydata['Return Whse Phone Number']." &nbsp; &nbsp".$bootstrap->b('', 'Fax: ').$companydata['Return Whse Fax Number'];
+					$content .= $bootstrap->p('', $address);
 				$content .= $bootstrap->close('div');
 			$content .= $bootstrap->close('div');
 			return $content;
@@ -160,7 +163,7 @@
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
 			$tb = new Table('class=table table-condensed table-striped');
 			$tb->tr();
-			$tb->td('', $bootstrap->label('', 'Received by: ').$bootstrap->input('class=form-control input-sm underlined price'));
+			$tb->td('', $bootstrap->label('', 'Received by: ').$bootstrap->input('class=form-control form-control-sm underlined price'));
 			$tb->td('', $bootstrap->label('', 'Date: ').$bootstrap->input('class=form-control input-sm underlined price'));
 			$tb->td('', $bootstrap->label('', 'RGA #'.$this->json['RGA Number']).$bootstrap->img("src=data:image/png;base64,$barcode_base64|class=img-responsive|alt=RGA # Barcode"));
 			$tb->td('', $bootstrap->label('', 'Customer: ').$bootstrap->p('class=form-control-static', $this->json['data']['header']['Customer Name']));

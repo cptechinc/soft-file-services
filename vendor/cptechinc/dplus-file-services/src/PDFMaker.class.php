@@ -72,8 +72,9 @@
 		 * @return string file
 		 */
 		public function process() {
-			$file = DplusWire::wire('config')->documentstoragedirectory.$this->fileID."-$this->filetype".".pdf";
-			$this->filename = $this->fileID."-$this->filetype".".pdf";
+			$filename = str_replace("-$this->filetype", '', $this->fileID)."-$this->filetype";
+			$file = DplusWire::wire('config')->documentstoragedirectory."$filename.pdf";
+			$this->filename = "$filename.pdf";
 			
 			if (file_exists($file)) {
 				unlink($file);

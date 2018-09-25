@@ -1,10 +1,9 @@
 $(document).ready(function() {
-    
-    $('body').popover({selector: '[data-toggle="popover"]', placement: 'top'});
+	
+	$('body').popover({selector: '[data-toggle="popover"]', placement: 'top'});
 	$('body').tooltip({selector: '[data-toggle="tooltip"]', placement: 'top'});
 	
-    
-    $('body').on('click', function (e) {
+	$('body').on('click', function (e) {
 		$('[data-toggle="popover"]').each(function () {
 			//the 'is' for buttons that trigger popups
 			//the 'has' for icons within a button that triggers a popup
@@ -13,39 +12,35 @@ $(document).ready(function() {
 			}
 		});
 	});
-    
-    /*==============================================================
-	   YOUTUBE NAVIGATION
+	
+	/*==============================================================
+		PAGE SCROLLING FUNCTIONS
 	=============================================================*/
-		$('.yt-menu-open').on('click', function(e) { //Youtube-esque navigation
-			e.preventDefault();
-			$('#yt-menu').toggle();
-			$(this).toggleClass('menu-open');
-			if ($(this).hasClass('menu-open')) {
-				$(this).css({"background-color":"#242F40", "color": "#f8f8f8"});
-			} else {
-				$(this).removeClass('menu-open').css({"background-color":"", "color": ""});
-			}
-		});
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 50) { $('#back-to-top-button').fadeIn(); } else { $('#back-to-top-button').fadeOut(); }
+	});
 
-		$(document).mouseup(function (e) {
-			var container = $("#yt-menu");
-			if (!container.is(e.target) && container.has(e.target).length === 0) {
-				 $('#yt-menu').hide();
-				 $('.yt-menu-open').data('function', "show").removeClass('menu-open').css({"background-color":"", "color": ""});
-			}
-		});
+	// scroll body to 0px on click
+	$('#back-to-top-button').click(function () {
+		$('#back-to-top-button').tooltip('hide');
+		$('body,html').animate({ scrollTop: 0 }, 800);
+		return false;
+	});
 });
 
 function preview_tableformatter(formatterform) {
 	var form = $(formatterform);
 	form.find('[name=action]').val('preview');
 	
-	form.postform({jsoncallback: true, html: true}, function(html) {
-		var title = form.find('.panel-title').text();
-		$(config.modals.ajax).find('.modal-body').addClass('modal-results').html(html);
-		$(config.modals.ajax).find('.modal-title').text('Previewing ' + title + ' Formatter');
-		$(config.modals.ajax).resizemodal('xl').modal();
+	form.postform({jsoncallback: true}, function(json) {
+		$.notify({
+			icon: json.response.icon,
+			message: json.response.message
+		},{
+			type: json.response.notifytype
+		});
+		$('#preview-formatter').removeClass('invisible').click();
+		$('#preview-formatter').click();
 	});
 }
 

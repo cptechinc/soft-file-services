@@ -1,10 +1,12 @@
 <?php include('./_head.php'); ?>
-	<div class="jumbotron pagetitle">
-		<div class="container">
-			<h1><?= $page->get('pagetitle|headline|title') ; ?></h1>
+	<main role="main">
+		<div class="jumbotron bg-dark text-light">
+			<div class="container">
+				<h1 class="display-3"><?= $page->get('pagetitle|headline|title') ; ?></h1>
+			</div>
 		</div>
-	</div>
-	<div class="container page">
-		<?php echo $page->body; ?>
-	</div>
+		<div class="container page">
+			<?= $page->body; ?>
+		</div>
+	</main>
 <?php include('./_foot.php'); // include footer markup ?>

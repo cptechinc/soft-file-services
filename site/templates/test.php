@@ -1,31 +1,25 @@
-<?php 
-    if ($input->requestMethod('POST')) {
-        $fileuploader = new FileUploader();
-        $uploaded = $fileuploader->upload($_FILES, $input->post->text('filename'));
-        
-        
-        if ($uploaded) {
-            $spreadsheetwriter = new SpreadSheetWriter();
-            $spreadsheetwriter->convert_filetouppercase($fileuploader->file, $input->post->text('file-extension'));
+<?php include('./_head.php'); ?>
+	<main role="main">
+		<div class="jumbotron bg-dark text-light">
+			<div class="container">
+				<h1 class="display-3"><?= $page->get('pagetitle|headline|title') ; ?></h1>
+			</div>
+		</div>
+		<div class="container page">
             
-            if (file_exists($spreadsheetwriter->outputfile->get_filepath())) {
-                header('Content-Description: File Transfer');
-                header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename='.basename($spreadsheetwriter->outputfile->get_filepath()));
-                header('Content-Transfer-Encoding: binary');
-                header('Expires: 0');
-                header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-                header('Pragma: public');
-                header('Content-Length: ' . filesize($spreadsheetwriter->outputfile->get_filepath()));
-                ob_clean();
-                flush();
-                readfile($spreadsheetwriter->outputfile->get_filepath());
-                exit;
-            } 
-        } else {
-            echo implode("<br>", $fileuploader->errors);
-        }
-    } else {
-        $page->body = $config->paths->content."file-uploader/form.php";
-        include ('./_include-page.php');
-    }
+        <div class="card">
+            <div class="row">
+                <div class="col-1 d-flex justify-content-center align-items-center bg-primary text-white">
+                    <i class="fa fa-2x fa-exclamation-triangle" aria-hidden="true"></i>
+                </div>
+                <div class="col-11 alert-info">
+                    <h5>Error!</h5>
+                    <p>Warning, your formatter could not be saved</p>
+                    <button type="button" aria-hidden="true" class="close" data-notify="dismiss" style="position: absolute; right: 20px; top: 5px; z-index: 9002;">×</button>
+                </div>
+            </div>
+            <div class="progress" data-notify="progressbar"><div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="120" aria-valuemin="0" aria-valuemax="100" style="width: 120%;"></div></div>
+		</div>
+        
+	</main>
+<?php include('./_foot.php'); // include footer markup ?>

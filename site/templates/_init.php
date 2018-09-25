@@ -24,14 +24,21 @@ include_once($config->paths->vendor."cptechinc/dplus-file-services/vendor/autolo
 $page->stringerbell = new StringerBell();
 $page->htmlwriter = new HTMLWriter();
 
-$config->styles->append(hashtemplatefile('styles/bootstrap.min.css'));
-$config->styles->append(hashtemplatefile('styles/libs/libraries.css'));
-$config->styles->append(hashtemplatefile('styles/styles.css'));
+$config->styles->append(hash_templatefile('styles/bootstrap.min.css'));
+$config->styles->append(hash_templatefile('styles/libs/font-awesome.min.css'));
+$config->styles->append(hash_templatefile('styles/styles.css'));
 
-$config->scripts->append(hashtemplatefile('scripts/libs/libraries.js'));
-$config->scripts->append(hashtemplatefile('scripts/scripts.js'));
+$config->scripts->append(hash_templatefile('scripts/libs/jquery.js'));
+$config->scripts->append(hash_templatefile('scripts/libs/popper.js'));
+$config->scripts->append(hash_templatefile('scripts/libs/bootstrap.min.js'));
+$config->scripts->append(hash_templatefile('scripts/libs/bootstrap-notify.min.js'));
+$config->scripts->append(hash_templatefile('scripts/scripts.js'));
 
 $appconfig = $pages->get('/config/');
+
+$config->COMPANYNBR = $input->get->company ? $input->get->int('company') : $config->COMPANYNBR;
+$config->companyfiles = "/var/www/html/data$config->COMPANYNBR/";
+$config->jsonfilepath = "/var/www/html/files/json$config->COMPANYNBR/";
 
 $page->formatterfactory = new PrintFormatterFactory(session_id());
 TableScreenMaker::set_filedirectory($config->jsonfilepath);
