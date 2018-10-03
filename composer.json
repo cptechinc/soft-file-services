@@ -32,7 +32,8 @@
         "eoghanobrien/php-simple-mail": "^1.7",
         "mikehaertl/phpwkhtmltopdf": "^2.3",
         "picqer/php-barcode-generator": "^0.2.2",
-        "phpoffice/phpspreadsheet": "dev-master"
+        "phpoffice/phpspreadsheet": "dev-master",
+        "interfax/interfax": "dev-master"
     },
     "autoload": {
         "files": [ "wire/core/ProcessWire.php" ]
