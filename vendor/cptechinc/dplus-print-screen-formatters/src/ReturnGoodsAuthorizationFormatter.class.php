@@ -23,7 +23,7 @@
 		 * @return string HTML
 		 */
 		public function generate_screen() {
-			$bootstrap = new HTMLWriter();
+			$bootstrap = new Dplus\Content\HTMLWriter();
 			$content = $this->generate_documentheader();
 			$this->generate_tableblueprint();
 
@@ -46,7 +46,7 @@
 		 * @return string HTML Content
 		 */
 		protected function generate_documentheader() {
-			$bootstrap = new HTMLWriter();
+			$bootstrap = new Dplus\Content\HTMLWriter();
 			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
 			$companydata = $this->json['data']['header'];
@@ -78,8 +78,8 @@
 		 * @return string         HTML Table for that section
 		 */
 		protected function generate_headersection($number = 1) {
-			$bootstrap = new HTMLWriter();
-			$tb = new Table('class=table table-condensed table-striped');
+			$bootstrap = new Dplus\Content\HTMLWriter();
+			$tb = new Dplus\Content\Table('class=table table-condensed table-striped');
 
 			foreach ($this->tableblueprint['header']['sections']["$number"] as $column) {
 				$tb->tr();
@@ -96,14 +96,14 @@
 		 * @return string  HTML Table
 		 */
 		protected function generate_detailsection() {
-			$bootstrap = new HTMLWriter();
-			$tb = new Table('class=table table-condensed table-striped|id=rga-table');
+			$bootstrap = new Dplus\Content\HTMLWriter();
+			$tb = new Dplus\Content\Table('class=table table-condensed table-striped|id=rga-table');
 			$tb->tablesection('thead');
 			foreach ($this->tableblueprint['detail']['rows'] as $detailrow) {
 				$tb->tr();
 				for ($i = 1; $i < ($this->formatter['detail']['colcount'] + 1); $i++) {
 					$column = $detailrow['columns']["$i"];
-					$class = HTMLWriter::get_justifyclass($column['label-justify']);
+					$class = Dplus\Content\HTMLWriter::get_justifyclass($column['label-justify']);
 					$tb->th("class=$class", $column['label']);
 				}
 			}
@@ -120,7 +120,7 @@
 							$column = $detailrow['columns'][$colnumber];
 							$celldata = $this->json['data']['detail'][$i][$column['id']];
 							$colspan = $column['col-length'];
-							$class = HTMLWriter::get_justifyclass($column['data-justify']);
+							$class = Dplus\Content\HTMLWriter::get_justifyclass($column['data-justify']);
 
 							if ($column['id'] == 'Item ID') {
 								$celldata .= "<br>".$bootstrap->span('class=description-small', ($this->json['data']['detail'][$i]['Item Description 1']));
@@ -146,7 +146,7 @@
 		 * @return string HTML Content
 		 */
 		protected function generate_termsection() {
-			$bootstrap = new HTMLWriter();
+			$bootstrap = new Dplus\Content\HTMLWriter();
 			$terms = $bootstrap->div('class=form-group', DplusWire::wire('pages')->get("/config/documents/$this->type/")->terms);
 			$content = str_replace(array('{shipvia}', '{shipviaacct}'), array($this->json['data']['header']['Return Ship Via Desc'], $this->json['data']['header']['Return Ship Account Nbr']), $terms);
 			$content .= $bootstrap->br();
@@ -158,10 +158,10 @@
 		 * @return string HTML Content
 		 */
 		protected function generate_receivesection() {
-			$bootstrap = new HTMLWriter();
+			$bootstrap = new Dplus\Content\HTMLWriter();
 			$barcoder_png = new Picqer\Barcode\BarcodeGeneratorPNG();
 			$barcode_base64 = base64_encode($barcoder_png->getBarcode($this->json['RGA Number'], $barcoder_png::TYPE_CODE_128));
-			$tb = new Table('class=table table-condensed table-striped');
+			$tb = new Dplus\Content\Table('class=table table-condensed table-striped');
 			$tb->tr();
 			$tb->td('', $bootstrap->label('', 'Received by: ').$bootstrap->input('class=form-control form-control-sm underlined price'));
 			$tb->td('', $bootstrap->label('', 'Date: ').$bootstrap->input('class=form-control input-sm underlined price'));

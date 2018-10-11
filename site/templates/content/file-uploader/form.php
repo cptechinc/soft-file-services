@@ -16,7 +16,7 @@
                 <label for="">Save as</label>
                 <select class="form-control input-sm" name="file-extension">
                     <option value="txt">txt</option>
-                    <?php foreach (FileUploader::$allowed_extensions as $extension) : ?>
+                    <?php foreach (Dplus\FileServices\FileUploader::$allowed_extensions as $extension) : ?>
                         <option value="<?= $extension; ?>"><?= $extension; ?></option>
                     <?php endforeach; ?>
                 </select>

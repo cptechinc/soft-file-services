@@ -3,7 +3,7 @@
 	 * Factory to load all the Screen Formatters
 	 */
 	class PrintFormatterFactory {
-		use ThrowErrorTrait;
+		use \Dplus\Base\ThrowErrorTrait;
 		
 		/**
 		 * Session Identifier

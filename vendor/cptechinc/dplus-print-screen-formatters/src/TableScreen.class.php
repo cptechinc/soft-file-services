@@ -3,8 +3,8 @@
 	 * Abstract file to build Screen classes from and to provide properties and methods
 	 */
 	abstract class TableScreenMaker {
-		use ThrowErrorTrait;
-		use MagicMethodTraits;
+		use \Dplus\Base\ThrowErrorTrait;
+		use \Dplus\Base\MagicMethodTraits;
 
 		/**
 		 * Session ID
@@ -219,7 +219,7 @@
 		 * @return string                    HTML for screen
 		 */
 		public function process_andgeneratescreen($generatejavascript = false) {
-			$bootstrap = new HTMLWriter();
+			$bootstrap = new Dplus\Content\HTMLWriter();
 			if (file_exists($this->fullfilepath)) {
 				// JSON file will be false if an error occurred during file_get_contents or json_decode
 				$this->process_json();
@@ -247,7 +247,7 @@
 		 * @return string  HTML select
 		 */
 		public function generate_shownotesselect() {
-			$bootstrap = new HTMLWriter();
+			$bootstrap = new Dplus\Content\HTMLWriter();
 			$array = array();
 			foreach (DplusWire::wire('config')->yesnoarray as $key => $value) {
 				$array[$value] = $key;
@@ -265,7 +265,7 @@
 		 * @param string $type   the type of data D = Date, N = Numeric, string
 		 */
 		public static function generate_formattedcelldata($parent, $column, $type = '') {
-			$bootstrap = new HTMLWriter();
+			$bootstrap = new Dplus\Content\HTMLWriter();
 			$celldata = '';
 			$type = isset($column['type']) ? $column['type'] : $type;
 			

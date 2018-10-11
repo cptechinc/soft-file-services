@@ -6,10 +6,28 @@
     "license": "MPL-2.0",
     "homepage": "https://processwire.com",
     "minimum-stability": "dev",
-    "repositories": [{
-        "type": "git",
-        "url": "https://github.com/cptechinc/purl.git"
-    }],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/cptechinc/purl.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/cptechinc/dplus-base.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/cptechinc/dplus-content.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/cptechinc/dplus-order.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/cptechinc/dplus-file-services.git"
+        }
+    ],
     "authors": [
         {
             "name": "Paul Gomez",
@@ -32,7 +50,11 @@
         "eoghanobrien/php-simple-mail": "^1.7",
         "mikehaertl/phpwkhtmltopdf": "^2.3",
         "picqer/php-barcode-generator": "^0.2.2",
-        "phpoffice/phpspreadsheet": "dev-master"
+        "phpoffice/phpspreadsheet": "dev-master",
+        "cptechinc/dplus-base": "dev-psr4",
+        "cptechinc/dplus-content": "dev-psr4",
+        "cptechinc/dplus-order": "dev-psr4",
+        "cptechinc/dplus-file-services": "dev-psr4"
     },
     "autoload": {
         "files": [ "wire/core/ProcessWire.php" ]

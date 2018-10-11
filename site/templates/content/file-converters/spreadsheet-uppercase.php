@@ -1,11 +1,11 @@
 <?php 
     if ($input->requestMethod('POST')) {
-        $fileuploader = new FileUploader();
+        $fileuploader = new Dplus\FileServices\FileUploader();
         $uploaded = $fileuploader->upload($_FILES, $input->post->text('filename'));
         
         
         if ($uploaded) {
-            $spreadsheetwriter = new SpreadSheetWriter();
+            $spreadsheetwriter = new Dplus\FileServices\SpreadSheetWriter();
             $spreadsheetwriter->convert_filetouppercase($fileuploader->file, $input->post->text('file-extension'));
             
             if (file_exists($spreadsheetwriter->outputfile->get_filepath())) {

@@ -1,4 +1,6 @@
 <?php
+	namespace Dplus\Base;
+	
 	class StringerBell {
 		/**
 		 * Checks to see if string is in a phone format
@@ -66,7 +68,7 @@
 		 * @return string           html string with the $needle highlighted or returns just the string
 		 */
 		public function highlight($haystack, $needle) {
-			$bootstrap = new Contento();
+			$bootstrap = new HTMLWriter();
 			if ($this->does_matchphone($haystack)) {
 				$needle = $this->does_matchphone($needle);
 			}
