@@ -18,6 +18,6 @@ wire
 site/config.php
 project.cson
 index.php
-vendor/composer
+vendor
 
 # Customer Configs
