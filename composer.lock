@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca96c744602f9e3de62db9387e1a3c1d",
+    "content-hash": "362d82a0ff25bf40433efbb048e2c38c",
     "packages": [
         {
             "name": "atk4/core",
@@ -110,11 +110,17 @@
         },
         {
             "name": "cptechinc/dplus-base",
-            "version": "dev-psr4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-base.git",
-                "reference": "5865837f7ae1b64a43697ba39224aefea70391e7"
+                "reference": "b2e4467a41ed13fc664e8272dcad751a7c8494ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cptechinc/dplus-base/zipball/b2e4467a41ed13fc664e8272dcad751a7c8494ee",
+                "reference": "b2e4467a41ed13fc664e8272dcad751a7c8494ee",
+                "shasum": ""
             },
             "require": {
                 "atk4/dsql": "1.1"
@@ -125,9 +131,11 @@
                     "Dplus\\Base\\": "src/"
                 },
                 "files": [
-                    "src/utfport.php"
+                    "src/utfport.php",
+                    "src/ModelClass.class.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Paul Gomez",
@@ -148,15 +156,21 @@
                 "dplus-attributes",
                 "dplus-base"
             ],
-            "time": "2018-10-11T16:20:21+00:00"
+            "time": "2018-11-28T16:02:09+00:00"
         },
         {
             "name": "cptechinc/dplus-content",
-            "version": "dev-psr4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-content.git",
-                "reference": "9f7d263697e0a601579061c7acdbfd4eab01d65e"
+                "reference": "07a0ff05578998a976f035c0b696e9954c67bf1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cptechinc/dplus-content/zipball/07a0ff05578998a976f035c0b696e9954c67bf1f",
+                "reference": "07a0ff05578998a976f035c0b696e9954c67bf1f",
+                "shasum": ""
             },
             "type": "library",
             "autoload": {
@@ -164,24 +178,36 @@
                     "Dplus\\Content\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Dplus Content Classes",
             "homepage": "http://github.com/cptechinc/dplus-content",
             "keywords": [
-                "HTML",
                 "TablePageSorter",
                 "form",
+                "html",
                 "paginator",
                 "table"
             ],
-            "time": "2018-10-11T19:57:43+00:00"
+            "time": "2018-11-09T22:04:32+00:00"
         },
         {
             "name": "cptechinc/dplus-file-services",
-            "version": "dev-psr4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-file-services.git",
-                "reference": "f54294282fcb3270787787621fa0fce5043d6044"
+                "reference": "345b4dcc39ef996fb15c9a35ef03628cd72a84e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cptechinc/dplus-file-services/zipball/345b4dcc39ef996fb15c9a35ef03628cd72a84e8",
+                "reference": "345b4dcc39ef996fb15c9a35ef03628cd72a84e8",
+                "shasum": ""
+            },
+            "require": {
+                "eoghanobrien/php-simple-mail": "^1.7",
+                "mikehaertl/phpwkhtmltopdf": "^2.3",
+                "picqer/php-barcode-generator": "^0.2.2"
             },
             "type": "library",
             "autoload": {
@@ -189,20 +215,30 @@
                     "Dplus\\FileServices\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Classes for Dplus Services",
             "homepage": "http://github.com/cptechinc/dplus-file-services",
             "keywords": [
-                "crm"
+                "dplus-csv",
+                "dplus-pdf",
+                "dplus-xls",
+                "pdf"
             ],
-            "time": "2018-10-11T20:30:20+00:00"
+            "time": "2018-11-09T22:09:49+00:00"
         },
         {
             "name": "cptechinc/dplus-order",
-            "version": "dev-psr4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-order.git",
-                "reference": "c35a500a74af3ea8a7c1d8bde7538d634a71014e"
+                "reference": "850589b07c75ccbeeea7de083db71776a5fcbbc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cptechinc/dplus-order/zipball/850589b07c75ccbeeea7de083db71776a5fcbbc8",
+                "reference": "850589b07c75ccbeeea7de083db71776a5fcbbc8",
+                "shasum": ""
             },
             "type": "library",
             "autoload": {
@@ -210,6 +246,7 @@
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Classes for Dplus Orders, Quotes, and Carts",
             "homepage": "http://github.com/cptechinc/dplus-order",
             "keywords": [
@@ -220,7 +257,81 @@
                 "quote",
                 "sales-order"
             ],
-            "time": "2018-10-11T20:06:10+00:00"
+            "time": "2018-11-09T22:13:13+00:00"
+        },
+        {
+            "name": "cptechinc/dplus-print-formatters",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cptechinc/dplus-print-formatters.git",
+                "reference": "cb6364c3959cc0afac25086e32efa9f5577fa156"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cptechinc/dplus-print-formatters/zipball/cb6364c3959cc0afac25086e32efa9f5577fa156",
+                "reference": "cb6364c3959cc0afac25086e32efa9f5577fa156",
+                "shasum": ""
+            },
+            "require": {
+                "atk4/dsql": "1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dplus\\PrintFormatters\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Paul Gomez",
+                    "email": "paul@cptechinc.com",
+                    "homepage": "https://www.cptechinc.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Barbara Bullemer",
+                    "email": "barbara@cptechinc.com",
+                    "homepage": "https://www.cptechinc.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dplus Print Formatters",
+            "homepage": "https://github.com/cptechinc/dplus-print-formatters",
+            "keywords": [
+                "dplus-print",
+                "dplus-print-format"
+            ],
+            "time": "2018-11-28T17:34:23+00:00"
+        },
+        {
+            "name": "cptechinc/dplus-processwire",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cptechinc/dplus-processwire.git",
+                "reference": "518e22e55546caacdd50b0074364eb44c8b2e2bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cptechinc/dplus-processwire/zipball/518e22e55546caacdd50b0074364eb44c8b2e2bb",
+                "reference": "518e22e55546caacdd50b0074364eb44c8b2e2bb",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/DplusWire.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Dplus Processwire",
+            "homepage": "http://github.com/cptechinc/dplus-processwire",
+            "keywords": [
+                "processwire-dplus"
+            ],
+            "time": "2018-10-12T21:47:36+00:00"
         },
         {
             "name": "eoghanobrien/php-simple-mail",
@@ -357,16 +468,16 @@
         },
         {
             "name": "markbaker/complex",
-            "version": "1.4.6",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarkBaker/PHPComplex.git",
-                "reference": "a78d82ae4e682c3809fc3023d1b0ce654f6ab12b"
+                "reference": "1ea674a8308baf547cbcbd30c5fcd6d301b7c000"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/a78d82ae4e682c3809fc3023d1b0ce654f6ab12b",
-                "reference": "a78d82ae4e682c3809fc3023d1b0ce654f6ab12b",
+                "url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/1ea674a8308baf547cbcbd30c5fcd6d301b7c000",
+                "reference": "1ea674a8308baf547cbcbd30c5fcd6d301b7c000",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +559,7 @@
                 "complex",
                 "mathematics"
             ],
-            "time": "2018-07-31T08:38:40+00:00"
+            "time": "2018-10-13T23:28:42+00:00"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -580,12 +691,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "57404f43742a8164b5eac3ab03b962d8740885c1"
+                "reference": "cd60531c44f580fbdfbd55dfb935af791f09be5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/57404f43742a8164b5eac3ab03b962d8740885c1",
-                "reference": "57404f43742a8164b5eac3ab03b962d8740885c1",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/cd60531c44f580fbdfbd55dfb935af791f09be5d",
+                "reference": "cd60531c44f580fbdfbd55dfb935af791f09be5d",
                 "shasum": ""
             },
             "require": {
@@ -610,6 +721,7 @@
                 "friendsofphp/php-cs-fixer": "@stable",
                 "jpgraph/jpgraph": "^4.0",
                 "mpdf/mpdf": "^7.0.0",
+                "phpcompatibility/php-compatibility": "^8.0",
                 "phpunit/phpunit": "^5.7",
                 "squizlabs/php_codesniffer": "^3.3",
                 "tecnickcom/tcpdf": "^6.2"
@@ -632,19 +744,22 @@
             ],
             "authors": [
                 {
-                    "name": "Maarten Balliauw",
-                    "homepage": "http://blog.maartenballiauw.be"
-                },
-                {
                     "name": "Erik Tilt"
                 },
                 {
-                    "name": "Franck Lefevre",
-                    "homepage": "http://rootslabs.net"
+                    "name": "Adrien Crivelli"
+                },
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "https://blog.maartenballiauw.be"
                 },
                 {
                     "name": "Mark Baker",
-                    "homepage": "http://markbakeruk.net"
+                    "homepage": "https://markbakeruk.net"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "https://rootslabs.net"
                 }
             ],
             "description": "PHPSpreadsheet - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
@@ -659,7 +774,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2018-09-30T03:57:24+00:00"
+            "time": "2018-11-25T17:40:15+00:00"
         },
         {
             "name": "picqer/php-barcode-generator",
@@ -788,7 +903,9 @@
         "cptechinc/dplus-base": 20,
         "cptechinc/dplus-content": 20,
         "cptechinc/dplus-order": 20,
-        "cptechinc/dplus-file-services": 20
+        "cptechinc/dplus-file-services": 20,
+        "cptechinc/dplus-print-formatters": 20,
+        "cptechinc/dplus-processwire": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

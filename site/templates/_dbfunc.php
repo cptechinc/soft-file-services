@@ -1,4 +1,5 @@
 <?php
+	use Dplus\ProcessWire\DplusWire;
 	use Dplus\Base\QueryBuilder;
 	
 	/* =============================================================
@@ -11,7 +12,7 @@
 	 * @param  bool   $debug     Run in debug? If so, return SQL Query
 	 * @return string            JSON encoded string of the formatter
 	 */
-	function get_printformatter($formatter, $userID = 'default', $debug = false) {
+	function get_screenformatter($formatter, $userID = 'default', $debug = false) {
 		$q = (new QueryBuilder())->table('formatter_print');
 		$q->field('data');
 		$q->where('type', $formatter);
@@ -34,7 +35,7 @@
 	 * @param  bool   $debug     Run in debug? If so, return SQL Query
 	 * @return bool              Does Formatter Exist
 	 */
-	function does_printformatterexist($formatter, $userID = 'default', $debug = false) {
+	function does_screenformatterexist($formatter, $userID = 'default', $debug = false) {
 		$q = (new QueryBuilder())->table('formatter_print');
 		$q->field($q->expr('IF(COUNT(*) > 0, 1, 0)'));
 		$q->where('type', $formatter);
@@ -57,7 +58,7 @@
 	 * @param  bool   $debug     Run in debug? If so, return SQL Query
 	 * @return array             Response array
 	 */
-	function update_formatter($formatter, $userID = 'default', $data, $debug = false) {
+	function update_screenformatter($formatter, $userID = 'default', $data, $debug = false) {
 		$q = (new QueryBuilder())->table('formatter_print');
 		$q->mode('update');
 		$q->set('data', $data);
@@ -81,7 +82,7 @@
 	 * @param  bool   $debug     Run in debug? If so, return SQL Query
 	 * @return array             Response array
 	 */
-	function create_formatter($formatter, $userID = 'default', $data, $debug = false) {
+	function create_screenformatter($formatter, $userID = 'default', $data, $debug = false) {
 		$q = (new QueryBuilder())->table('formatter_print');
 		$q->mode('insert');
 		$q->set('data', $data);

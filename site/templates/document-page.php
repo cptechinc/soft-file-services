@@ -1,4 +1,7 @@
 <?php
+    use Dplus\FileServices\UploadedFile;
+    use Dplus\FileServices\PDFMaker;
+    
     $config->styles->remove(hash_templatefile('styles/bootstrap.min.css'));
     $config->styles->append(hash_templatefile('styles/bootstrap3.min.css'));
     
@@ -25,10 +28,10 @@
     	if ($config->ajax && $input->$requestmethod->text('preview') != 'preview') {
     		$url = new Purl\Url($page->fullURL->getUrl());
     		$url->query->set('view', 'print');
-    		$page->body .= $page->htmlwriter->openandclose('p', '', $page->htmlwriter->makeprintlink($url->getUrl(), 'View Printable Version'));
+    		$page->body .= $page->htmlwriter->openandclose('p', '', $page->htmlwriter->generate_printlink($url->getUrl(), 'View Printable Version'));
     	}
     	
-    	if (file_exists($formatter->fullfilepath)) {
+    	if (file_exists($formatter->get_filepath())) {
     		$formatter->process_json();
     		
     		if ($formatter->json['error']) {
