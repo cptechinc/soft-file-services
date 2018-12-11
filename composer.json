@@ -39,6 +39,7 @@
         "cptechinc/dplus-content": "dev-master",
         "cptechinc/dplus-order": "dev-master",
         "cptechinc/dplus-file-services": "dev-master",
+        "cptechinc/dplus-screen-formatters": "dev-master",
         "cptechinc/dplus-print-formatters": "dev-master",
         "cptechinc/dplus-processwire": "dev-master"
     },
@@ -48,6 +49,7 @@
             "vendor/cptechinc/dplus-base/vendor/autoload.php",
             "vendor/cptechinc/dplus-content/vendor/autoload.php",
             "vendor/cptechinc/dplus-file-services/vendor/autoload.php",
+            "vendor/cptechinc/dplus-screen-formatters/vendor/autoload.php",
             "vendor/cptechinc/dplus-print-formatters/vendor/autoload.php"
         ]
     }

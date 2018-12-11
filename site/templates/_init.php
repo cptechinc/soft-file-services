@@ -1,8 +1,8 @@
 <?php
-	use Dplus\Base\ScreenMaker;
-	use Dplus\Base\ScreenMakerFormatter;
 	use Dplus\Base\StringerBell;
 	use Dplus\Content\HTMLWriter;
+	use Dplus\ScreenFormatters\ScreenMaker;
+	use Dplus\ScreenFormatters\ScreenMakerFormatter;
 	use Dplus\PrintFormatters\PrintFormatterFactory;
 	
 	/**
@@ -49,8 +49,8 @@
 	$page->formatterfactory = new PrintFormatterFactory(session_id());
 	ScreenMaker::set_filedirectory($config->jsonfilepath);
 	ScreenMaker::set_testdatafiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/examples/");
-	ScreenMaker::set_fieldfiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/field-definition/");
-	ScreenMakerFormatter::set_defaultformatterfiledirectory($config->paths->vendor."cptechinc/dplus-print-screen-formatters/default/");
+	ScreenMaker::set_fieldfiledirectory($config->paths->vendor."cptechinc/dplus-print-formatters/field-definition/");
+	ScreenMakerFormatter::set_defaultformatterfiledirectory($config->paths->vendor."cptechinc/dplus-print-formatters/default/");
 
 	$page->fullURL = new \Purl\Url($page->httpUrl);
 	$page->fullURL->path = '';

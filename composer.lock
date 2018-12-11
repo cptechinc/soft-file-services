@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "362d82a0ff25bf40433efbb048e2c38c",
+    "content-hash": "50d5af3e3cbfdbe2fef812710f1b9289",
     "packages": [
         {
             "name": "atk4/core",
@@ -114,12 +114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-base.git",
-                "reference": "b2e4467a41ed13fc664e8272dcad751a7c8494ee"
+                "reference": "b418f4c84f4e81e5417a2c3a66146cffb1d977bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cptechinc/dplus-base/zipball/b2e4467a41ed13fc664e8272dcad751a7c8494ee",
-                "reference": "b2e4467a41ed13fc664e8272dcad751a7c8494ee",
+                "url": "https://api.github.com/repos/cptechinc/dplus-base/zipball/b418f4c84f4e81e5417a2c3a66146cffb1d977bf",
+                "reference": "b418f4c84f4e81e5417a2c3a66146cffb1d977bf",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                 "dplus-attributes",
                 "dplus-base"
             ],
-            "time": "2018-11-28T16:02:09+00:00"
+            "time": "2018-11-29T17:56:39+00:00"
         },
         {
             "name": "cptechinc/dplus-content",
@@ -265,12 +265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-print-formatters.git",
-                "reference": "cb6364c3959cc0afac25086e32efa9f5577fa156"
+                "reference": "96c7dbbd6a97f78f5b10dd9141d3d07740f72003"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cptechinc/dplus-print-formatters/zipball/cb6364c3959cc0afac25086e32efa9f5577fa156",
-                "reference": "cb6364c3959cc0afac25086e32efa9f5577fa156",
+                "url": "https://api.github.com/repos/cptechinc/dplus-print-formatters/zipball/96c7dbbd6a97f78f5b10dd9141d3d07740f72003",
+                "reference": "96c7dbbd6a97f78f5b10dd9141d3d07740f72003",
                 "shasum": ""
             },
             "require": {
@@ -303,7 +303,7 @@
                 "dplus-print",
                 "dplus-print-format"
             ],
-            "time": "2018-11-28T17:34:23+00:00"
+            "time": "2018-12-05T22:30:10+00:00"
         },
         {
             "name": "cptechinc/dplus-processwire",
@@ -332,6 +332,54 @@
                 "processwire-dplus"
             ],
             "time": "2018-10-12T21:47:36+00:00"
+        },
+        {
+            "name": "cptechinc/dplus-screen-formatters",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cptechinc/dplus-screen-formatters.git",
+                "reference": "04bf6d9cfba6600cc73c2f8433fdb4e348a948fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cptechinc/dplus-screen-formatters/zipball/04bf6d9cfba6600cc73c2f8433fdb4e348a948fd",
+                "reference": "04bf6d9cfba6600cc73c2f8433fdb4e348a948fd",
+                "shasum": ""
+            },
+            "require": {
+                "atk4/dsql": "1.1",
+                "cptechinc/dplus-content": "dev-master",
+                "cptechinc/dplus-processwire": "dev-master",
+                "jwage/purl": "dev-cptechinc"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dplus\\ScreenFormatters\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Paul Gomez",
+                    "email": "paul@cptechinc.com",
+                    "homepage": "https://www.cptechinc.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Barbara Bullemer",
+                    "email": "barbara@cptechinc.com",
+                    "homepage": "https://www.cptechinc.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dplus Screen Formatter Library",
+            "homepage": "https://github.com/cptechinc/dplus-screen-formatters",
+            "keywords": [
+                "dplus-screen-formatters"
+            ],
+            "time": "2018-11-29T15:46:41+00:00"
         },
         {
             "name": "eoghanobrien/php-simple-mail",
@@ -691,12 +739,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "cd60531c44f580fbdfbd55dfb935af791f09be5d"
+                "reference": "153186e8977a73b90786614bfdfdc6db18d0c504"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/cd60531c44f580fbdfbd55dfb935af791f09be5d",
-                "reference": "cd60531c44f580fbdfbd55dfb935af791f09be5d",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/153186e8977a73b90786614bfdfdc6db18d0c504",
+                "reference": "153186e8977a73b90786614bfdfdc6db18d0c504",
                 "shasum": ""
             },
             "require": {
@@ -774,7 +822,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2018-11-25T17:40:15+00:00"
+            "time": "2018-12-04T22:29:31+00:00"
         },
         {
             "name": "picqer/php-barcode-generator",
@@ -904,6 +952,7 @@
         "cptechinc/dplus-content": 20,
         "cptechinc/dplus-order": 20,
         "cptechinc/dplus-file-services": 20,
+        "cptechinc/dplus-screen-formatters": 20,
         "cptechinc/dplus-print-formatters": 20,
         "cptechinc/dplus-processwire": 20
     },
