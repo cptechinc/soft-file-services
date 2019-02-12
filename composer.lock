@@ -114,12 +114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-base.git",
-                "reference": "b418f4c84f4e81e5417a2c3a66146cffb1d977bf"
+                "reference": "39d9c684749e0b55a9a1877c685fab7412533623"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cptechinc/dplus-base/zipball/b418f4c84f4e81e5417a2c3a66146cffb1d977bf",
-                "reference": "b418f4c84f4e81e5417a2c3a66146cffb1d977bf",
+                "url": "https://api.github.com/repos/cptechinc/dplus-base/zipball/39d9c684749e0b55a9a1877c685fab7412533623",
+                "reference": "39d9c684749e0b55a9a1877c685fab7412533623",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                 "dplus-attributes",
                 "dplus-base"
             ],
-            "time": "2018-11-29T17:56:39+00:00"
+            "time": "2018-12-18T18:54:01+00:00"
         },
         {
             "name": "cptechinc/dplus-content",
@@ -164,12 +164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-content.git",
-                "reference": "07a0ff05578998a976f035c0b696e9954c67bf1f"
+                "reference": "82749f5e3c2b188dbf1111e3e88993cb64724027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cptechinc/dplus-content/zipball/07a0ff05578998a976f035c0b696e9954c67bf1f",
-                "reference": "07a0ff05578998a976f035c0b696e9954c67bf1f",
+                "url": "https://api.github.com/repos/cptechinc/dplus-content/zipball/82749f5e3c2b188dbf1111e3e88993cb64724027",
+                "reference": "82749f5e3c2b188dbf1111e3e88993cb64724027",
                 "shasum": ""
             },
             "type": "library",
@@ -188,7 +188,7 @@
                 "paginator",
                 "table"
             ],
-            "time": "2018-11-09T22:04:32+00:00"
+            "time": "2018-12-13T16:01:58+00:00"
         },
         {
             "name": "cptechinc/dplus-file-services",
@@ -232,12 +232,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-order.git",
-                "reference": "850589b07c75ccbeeea7de083db71776a5fcbbc8"
+                "reference": "36835a4842e10aae5a033acd2f75fd415b15c35e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cptechinc/dplus-order/zipball/850589b07c75ccbeeea7de083db71776a5fcbbc8",
-                "reference": "850589b07c75ccbeeea7de083db71776a5fcbbc8",
+                "url": "https://api.github.com/repos/cptechinc/dplus-order/zipball/36835a4842e10aae5a033acd2f75fd415b15c35e",
+                "reference": "36835a4842e10aae5a033acd2f75fd415b15c35e",
                 "shasum": ""
             },
             "type": "library",
@@ -257,7 +257,7 @@
                 "quote",
                 "sales-order"
             ],
-            "time": "2018-11-09T22:13:13+00:00"
+            "time": "2019-02-05T15:02:17+00:00"
         },
         {
             "name": "cptechinc/dplus-print-formatters",
@@ -265,12 +265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-print-formatters.git",
-                "reference": "96c7dbbd6a97f78f5b10dd9141d3d07740f72003"
+                "reference": "fd6e8d82bb5d89b096098efec94d69e40e00e9e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cptechinc/dplus-print-formatters/zipball/96c7dbbd6a97f78f5b10dd9141d3d07740f72003",
-                "reference": "96c7dbbd6a97f78f5b10dd9141d3d07740f72003",
+                "url": "https://api.github.com/repos/cptechinc/dplus-print-formatters/zipball/fd6e8d82bb5d89b096098efec94d69e40e00e9e4",
+                "reference": "fd6e8d82bb5d89b096098efec94d69e40e00e9e4",
                 "shasum": ""
             },
             "require": {
@@ -303,7 +303,7 @@
                 "dplus-print",
                 "dplus-print-format"
             ],
-            "time": "2018-12-05T22:30:10+00:00"
+            "time": "2018-12-12T17:14:38+00:00"
         },
         {
             "name": "cptechinc/dplus-processwire",
@@ -339,12 +339,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cptechinc/dplus-screen-formatters.git",
-                "reference": "04bf6d9cfba6600cc73c2f8433fdb4e348a948fd"
+                "reference": "d25e286629098c4f70ea5b20e17e92146da583b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cptechinc/dplus-screen-formatters/zipball/04bf6d9cfba6600cc73c2f8433fdb4e348a948fd",
-                "reference": "04bf6d9cfba6600cc73c2f8433fdb4e348a948fd",
+                "url": "https://api.github.com/repos/cptechinc/dplus-screen-formatters/zipball/d25e286629098c4f70ea5b20e17e92146da583b6",
+                "reference": "d25e286629098c4f70ea5b20e17e92146da583b6",
                 "shasum": ""
             },
             "require": {
@@ -379,7 +379,7 @@
             "keywords": [
                 "dplus-screen-formatters"
             ],
-            "time": "2018-11-29T15:46:41+00:00"
+            "time": "2018-12-11T20:47:34+00:00"
         },
         {
             "name": "eoghanobrien/php-simple-mail",
@@ -610,6 +610,76 @@
             "time": "2018-10-13T23:28:42+00:00"
         },
         {
+            "name": "markbaker/matrix",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarkBaker/PHPMatrix.git",
+                "reference": "6ea97472b5baf12119b4f31f802835b820dd6d64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarkBaker/PHPMatrix/zipball/6ea97472b5baf12119b4f31f802835b820dd6d64",
+                "reference": "6ea97472b5baf12119b4f31f802835b820dd6d64",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6.0|^7.0.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
+                "phpcompatibility/php-compatibility": "^8.0",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phploc/phploc": "2.*",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "^4.8.35|^5.4.0",
+                "sebastian/phpcpd": "2.*",
+                "squizlabs/php_codesniffer": "^3.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matrix\\": "classes/src/"
+                },
+                "files": [
+                    "classes/src/functions/adjoint.php",
+                    "classes/src/functions/antidiagonal.php",
+                    "classes/src/functions/cofactors.php",
+                    "classes/src/functions/determinant.php",
+                    "classes/src/functions/diagonal.php",
+                    "classes/src/functions/identity.php",
+                    "classes/src/functions/inverse.php",
+                    "classes/src/functions/minors.php",
+                    "classes/src/functions/trace.php",
+                    "classes/src/functions/transpose.php",
+                    "classes/src/operations/add.php",
+                    "classes/src/operations/directsum.php",
+                    "classes/src/operations/subtract.php",
+                    "classes/src/operations/multiply.php",
+                    "classes/src/operations/divideby.php",
+                    "classes/src/operations/divideinto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@lange.demon.co.uk"
+                }
+            ],
+            "description": "PHP Class for working with matrices",
+            "homepage": "https://github.com/MarkBaker/PHPMatrix",
+            "keywords": [
+                "mathematics",
+                "matrix",
+                "vector"
+            ],
+            "time": "2018-11-04T22:12:12+00:00"
+        },
+        {
             "name": "mikehaertl/php-shellcommand",
             "version": "1.4.1",
             "source": {
@@ -739,17 +809,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "153186e8977a73b90786614bfdfdc6db18d0c504"
+                "reference": "11575ef3c416aa9c0be1ae3dfd3cad8d385a418c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/153186e8977a73b90786614bfdfdc6db18d0c504",
-                "reference": "153186e8977a73b90786614bfdfdc6db18d0c504",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/11575ef3c416aa9c0be1ae3dfd3cad8d385a418c",
+                "reference": "11575ef3c416aa9c0be1ae3dfd3cad8d385a418c",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
                 "ext-dom": "*",
+                "ext-fileinfo": "*",
                 "ext-gd": "*",
                 "ext-iconv": "*",
                 "ext-libxml": "*",
@@ -760,11 +831,13 @@
                 "ext-xmlwriter": "*",
                 "ext-zip": "*",
                 "ext-zlib": "*",
-                "markbaker/complex": "^1.4.1",
+                "markbaker/complex": "^1.4",
+                "markbaker/matrix": "^1.1",
                 "php": "^5.6|^7.0",
                 "psr/simple-cache": "^1.0"
             },
             "require-dev": {
+                "doctrine/instantiator": "^1.0.0",
                 "dompdf/dompdf": "^0.8.0",
                 "friendsofphp/php-cs-fixer": "@stable",
                 "jpgraph/jpgraph": "^4.0",
@@ -822,7 +895,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2018-12-04T22:29:31+00:00"
+            "time": "2019-02-08T20:08:55+00:00"
         },
         {
             "name": "picqer/php-barcode-generator",
